@@ -85,7 +85,7 @@ function onLoad() {
 
 	};
 	for (var emoteName in emoteList) {
-		emoteList[emoteName][0] = "<img style=\"max-height: 32px;\"src=\"" + emoteList[emoteName][0] + "\"\\>";
+		emoteList[emoteName][0] = "<img style=\"max-height: 32px;\" title=\"" + emoteName + "\" alt=\"" + emoteName + "\" src=\"" + emoteList[emoteName][0] + "\"\\>";
 	}
 	startReplaceLoop();
 }
