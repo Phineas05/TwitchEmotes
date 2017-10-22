@@ -80,13 +80,13 @@ function onLoad() {
 }
 
 function startReplaceLoop() {
-	$("body *:not(:has(*)), h1").each(function() {
+	$("body *:not(:has(*))").each(function() {
 		replacePhrasesWithEmotes($(this), $(this).prop("tagName"), $(this).html());
 	});
 }
 
 function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
-	if (blacklistedTags.indexOf(elementTagName) < 0) {
+	if (blacklistedTags.indexOf(elementTagName) < 0) {		
 		for (var emoteName in emoteList) {
 			var emoteImg = emoteList[emoteName];
 			var regExp = new RegExp("\\b" + emoteName + "\\b", "g");
