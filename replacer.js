@@ -18,7 +18,6 @@ function startReplaceLoop() {
 
 function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
 	if (blacklistedTags.indexOf(elementTagName) < 0) {
-		console.log(elementTagName);
 		for (var oldText1 in emoteList) {
 			var oldText2 = oldText1.charAt(0).toUpperCase() + oldText1.slice(1);
 			var oldText3 = oldText1.toUpperCase();
