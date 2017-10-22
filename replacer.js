@@ -29,7 +29,7 @@ function onLoad() {
 		"KappaPride": "https://static-cdn.jtvnw.net/emoticons/v1/55338/1.0",
 		"Kappa": "https://static-cdn.jtvnw.net/emoticons/v1/25/1.0",
 		"Keepo": "https://static-cdn.jtvnw.net/emoticons/v1/1902/1.0",
-		"KreyGasm": "https://static-cdn.jtvnw.net/emoticons/v1/41/1.0",
+		"Kreygasm": "https://static-cdn.jtvnw.net/emoticons/v1/41/1.0",
 		"LUL": "https://static-cdn.jtvnw.net/emoticons/v1/425618/1.0",
 		"MingLee": "https://static-cdn.jtvnw.net/emoticons/v1/68856/1.0",
 		"MrDestructoid": "https://static-cdn.jtvnw.net/emoticons/v1/28/1.0",
