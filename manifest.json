@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "TwitchEmotes",
 	"version": "1.0",
-	"description": "Twitch emotes everywhere!",
+	"description": "Displays Twitch, BetterTTV and FrankerFaceZ emotes on all sites",
 	"icons": {
 		"128": "icon.png" 
 	},
