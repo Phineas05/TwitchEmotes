@@ -14,18 +14,18 @@ function onLoad() {
 
 function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
 	if (blacklistedTags.indexOf(elementTagName) < 0) {
-		for (var oldWord1 in wordList) {
-			var oldWord2 = oldWord1.charAt(0).toUpperCase() + oldWord1.slice(1);
-			var oldWord3 = oldWord1.toUpperCase();
-			var newWord1 = wordList[oldWord1];
-			var newWord2 = newWord1.charAt(0).toUpperCase() + newWord1.slice(1);
-			var newWord3 = newWord1.toUpperCase();
-			var regExp1 = new RegExp(oldWord1, "g");
-			var regExp2 = new RegExp(oldWord2, "g");
-			var regExp3 = new RegExp(oldWord3, "g");			
-			elementContent = elementContent.replace(regExp1, newWord1);
-			elementContent = elementContent.replace(regExp2, newWord2);
-			elementContent = elementContent.replace(regExp3, newWord3);			
+		for (var oldText1 in emoteList) {
+			var oldText2 = oldText1.charAt(0).toUpperCase() + oldText1.slice(1);
+			var oldText3 = oldText1.toUpperCase();
+			var newText1 = emoteList[oldText1];
+			var newText2 = newText1.charAt(0).toUpperCase() + newText1.slice(1);
+			var newText3 = newText1.toUpperCase();
+			var regExp1 = new RegExp(oldText1, "g");
+			var regExp2 = new RegExp(oldText2, "g");
+			var regExp3 = new RegExp(oldText3, "g");			
+			elementContent = elementContent.replace(regExp1, newText1);
+			elementContent = elementContent.replace(regExp2, newText2);
+			elementContent = elementContent.replace(regExp3, newText3);			
 		}
 		element.html(elementContent);
 	}
