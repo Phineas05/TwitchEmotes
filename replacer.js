@@ -62,7 +62,16 @@ function onLoad() {
 		"FeelsGoodMan": "https://cdn.betterttv.net/emote/566c9fde65dbbdab32ec053e/1x",
 		"LuL": "https://cdn.betterttv.net/emote/567b00c61ddbe1786688a633/1x",
 		"FeelsAmazingMan": "https://cdn.betterttv.net/emote/5733ff12e72c3c0814233e20/1x",
-		"DuckerZ": "https://cdn.betterttv.net/emote/573d38b50ffbf6cc5cc38dc9/1x"
+		"DuckerZ": "https://cdn.betterttv.net/emote/573d38b50ffbf6cc5cc38dc9/1x",
+		"PepePls": "https://cdn.betterttv.net/emote/55898e122612142e6aaa935b/1x",
+		"gachiGASM": "https://cdn.betterttv.net/emote/55999813f0db38ef6c7c663e/1x",
+		"OMEGALUL": "https://cdn.betterttv.net/emote/583089f4737a8e61abb0186b/1x",
+		"monkaS": "https://cdn.betterttv.net/emote/56e9f494fff3cc5c35e5287e/1x",
+		"monkaMEGA": "https://cdn.betterttv.net/emote/58903da0b3b0df756ac3e64e/1x",
+		"HAhaa": "https://cdn.betterttv.net/emote/55f47f507f08be9f0a63ce37/1x",
+		"ZULUL": "https://cdn.betterttv.net/emote/57b38e53d5472c5343820619/1x",
+		"gachiBASS": "https://cdn.betterttv.net/emote/57719a9a6bdecd592c3ad59b/1x",
+		"Clap": "https://cdn.betterttv.net/emote/55b6f480e66682f576dd94f5/1x"
 	};
 	for (var emoteName in emoteList) {
 		emoteList[emoteName] = "<img src=\"" + emoteList[emoteName] + "\"\\>";
