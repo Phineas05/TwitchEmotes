@@ -3,6 +3,9 @@
 	"name": "TwitchEmotes",
 	"version": "1.0",
 	"description": "Replaces Twitch emote phrases with emote images",
+	"icons": {
+		"128": "icon.png" 
+	},
 	"content_scripts": [{
 		"matches": ["<all_urls>"], 
 		"js": ["jquery-3.2.1.min.js", "replacer.js"]
