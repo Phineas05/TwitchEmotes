@@ -47,7 +47,22 @@ function onLoad() {
 		"TriHard": "https://static-cdn.jtvnw.net/emoticons/v1/120232/1.0",
 		"VoteNay": "https://static-cdn.jtvnw.net/emoticons/v1/106294/1.0",
 		"VoteYea": "https://static-cdn.jtvnw.net/emoticons/v1/106293/1.0",
-		"WutFace": "https://static-cdn.jtvnw.net/emoticons/v1/28087/1.0"
+		"WutFace": "https://static-cdn.jtvnw.net/emoticons/v1/28087/1.0",
+		"PedoBear": "https://cdn.betterttv.net/emote/54fa928f01e468494b85b54f/1x",
+		"CiGrip": "https://cdn.betterttv.net/emote/54fa8fce01e468494b85b53c/1x",
+		"GabeN": "https://cdn.betterttv.net/emote/54fa90ba01e468494b85b543/1x",
+		"AngelThump": "https://cdn.betterttv.net/emote/566ca1a365dbbdab32ec055b/1x",
+		"D:": "https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x",
+		"VisLaud": "https://cdn.betterttv.net/emote/550352766f86a5b26c281ba2/1x",
+		"KKona": "https://cdn.betterttv.net/emote/566ca04265dbbdab32ec054a/1x",
+		"haHAA": "https://cdn.betterttv.net/emote/555981336ba1901877765555/1x",
+		"FeelsBirthdayMan": "https://cdn.betterttv.net/emote/55b6524154eefd53777b2580/1x",
+		"FeelsBadMan": "https://cdn.betterttv.net/emote/566c9fc265dbbdab32ec053b/1x",
+		"BasedGod": "https://cdn.betterttv.net/emote/566c9eeb65dbbdab32ec052b/1x",
+		"FeelsGoodMan": "https://cdn.betterttv.net/emote/566c9fde65dbbdab32ec053e/1x",
+		"LuL": "https://cdn.betterttv.net/emote/567b00c61ddbe1786688a633/1x",
+		"FeelsAmazingMan": "https://cdn.betterttv.net/emote/5733ff12e72c3c0814233e20/1x",
+		"DuckerZ": "https://cdn.betterttv.net/emote/573d38b50ffbf6cc5cc38dc9/1x"
 	};
 	for (var emoteName in emoteList) {
 		emoteList[emoteName] = "<img src=\"" + emoteList[emoteName] + "\"\\>";
@@ -65,7 +80,7 @@ function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
 	if (blacklistedTags.indexOf(elementTagName) < 0) {
 		for (var emoteName in emoteList) {
 			var emoteImg = emoteList[emoteName];
-			var regExp = new RegExp("\\b" + emoteName + "\\b", "gi");
+			var regExp = new RegExp("\\b" + emoteName + "\\b", "g");
 			elementContent = elementContent.replace(regExp, emoteImg);
 		}
 		element.html(elementContent);
