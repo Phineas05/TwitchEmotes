@@ -3,7 +3,7 @@ var blacklistedTags;
 var emoteList;
 
 function onLoad() {
-	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "LINK", "TEMPLATE"];
+	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE", "DIV"];
 	emoteList = {
 
 		// Global Twitch Emotes
@@ -81,7 +81,7 @@ function onLoad() {
 		"PagChomp": "https://cdn.frankerfacez.com/emoticon/61496/1",
 		"4HEad": "https://cdn.frankerfacez.com/emoticon/165783/1",
 		"HYPERBRUH": "https://cdn.frankerfacez.com/emoticon/204717/1",
-		"monkaGun": "https://cdn.frankerfacez.com/emoticon/187256/1"
+		"monkaGun": "https://cdn.frankerfacez.com/emoticon/187256/1",
 
 	};
 	for (var emoteName in emoteList) {
@@ -91,19 +91,24 @@ function onLoad() {
 }
 
 function startReplaceLoop() {
-	$("body *:not(:has(*))").each(function() {
-		replacePhrasesWithEmotes($(this), $(this).prop("tagName"), $(this).html());
+	$("body *").each(function() {
+		elementTagName = $(this).prop("tagName");
+		if (blacklistedTags.indexOf(elementTagName) < 0) {
+			$(this).contents().filter(function() { return this.nodeType == 3; }).each(function() {
+				replacePhrasesWithEmotes(this);
+			});
+		}
 	});
 }
 
-function replacePhrasesWithEmotes(element, elementTagName, elementContent) {	
-	if (blacklistedTags.indexOf(elementTagName) < 0) {
-		console.log(elementTagName);
-		for (var emoteName in emoteList) {
-			var emoteImg = emoteList[emoteName];
-			var regExp = new RegExp("\\b" + emoteName + "\\b", "g");
-			elementContent = elementContent.replace(regExp, emoteImg);
-		}
-		element.html(elementContent);
+function replacePhrasesWithEmotes(element, elementContent) {
+	var elementContent = element.textContent;
+	for (var emoteName in emoteList) {
+		var emoteImg = emoteList[emoteName];
+		var regExp = new RegExp("\\b" + emoteName + "\\b", "gi");
+		elementContent = elementContent.replace(regExp, emoteImg);
+	}
+	if (element.textContent != elementContent) {
+		$(element).replaceWith(elementContent);
 	}
 }
