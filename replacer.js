@@ -6,7 +6,7 @@ function onLoad() {
 	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE", "DIV"];
 	emoteList = {
 
-		// Global Twitch Emotes
+		// Twitch Emotes
 		"4Head": "https://static-cdn.jtvnw.net/emoticons/v1/354/1.0",
 		"ANELE": "https://static-cdn.jtvnw.net/emoticons/v1/3792/1.0",
 		"BabyRage": "https://static-cdn.jtvnw.net/emoticons/v1/22639/1.0",
@@ -51,7 +51,7 @@ function onLoad() {
 		"VoteYea": "https://static-cdn.jtvnw.net/emoticons/v1/106293/1.0",
 		"WutFace": "https://static-cdn.jtvnw.net/emoticons/v1/28087/1.0",
 
-		// BTTV Emotes
+		// BetterTTV Emotes
 		"PedoBear": "https://cdn.betterttv.net/emote/54fa928f01e468494b85b54f/1x",
 		"CiGrip": "https://cdn.betterttv.net/emote/54fa8fce01e468494b85b53c/1x",
 		"GabeN": "https://cdn.betterttv.net/emote/54fa90ba01e468494b85b543/1x",
