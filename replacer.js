@@ -3,11 +3,11 @@ var blacklistedTags;
 var emoteList;
 
 function onLoad() {
-	blacklistedTags = ["TITLE", "STYLE", "SCRIPT"];
+	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "IMG"];
 	emoteList = {
-		"Kappa": "KappaTest"
+		"kappa": "<img src=\"https://static-cdn.jtvnw.net/emoticons/v1/25/1.0\"\\>"
 	};
-	$("*:not(:has(*)), p, tr").each(function() {
+	$("*:not(:has(*))").each(function() {
 		replacePhrasesWithEmotes($(this), $(this).prop("tagName"), $(this).html());
 	});
 }
@@ -20,9 +20,9 @@ function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
 			var newText1 = emoteList[oldText1];
 			var newText2 = newText1.charAt(0).toUpperCase() + newText1.slice(1);
 			var newText3 = newText1.toUpperCase();
-			var regExp1 = new RegExp(oldText1, "g");
-			var regExp2 = new RegExp(oldText2, "g");
-			var regExp3 = new RegExp(oldText3, "g");			
+			var regExp1 = new RegExp("\\b" + oldText1 + "\\b", "g");
+			var regExp2 = new RegExp("\\b" + oldText2 + "\\b", "g");
+			var regExp3 = new RegExp("\\b" + oldText3 + "\\b", "g");			
 			elementContent = elementContent.replace(regExp1, newText1);
 			elementContent = elementContent.replace(regExp2, newText2);
 			elementContent = elementContent.replace(regExp3, newText3);			
