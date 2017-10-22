@@ -22,7 +22,10 @@ function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
 			var newText3 = newText1.toUpperCase();
 			var regExp1 = new RegExp("\\b" + oldText1 + "\\b", "g");
 			var regExp2 = new RegExp("\\b" + oldText2 + "\\b", "g");
-			var regExp3 = new RegExp("\\b" + oldText3 + "\\b", "g");			
+			var regExp3 = new RegExp("\\b" + oldText3 + "\\b", "g");
+			console.log(elementContent.match(regExp1));
+			console.log(elementContent.match(regExp2));
+			console.log(elementContent.match(regExp3));
 			elementContent = elementContent.replace(regExp1, newText1);
 			elementContent = elementContent.replace(regExp2, newText2);
 			elementContent = elementContent.replace(regExp3, newText3);			
