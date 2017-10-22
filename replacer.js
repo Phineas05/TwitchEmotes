@@ -3,8 +3,10 @@ var blacklistedTags;
 var emoteList;
 
 function onLoad() {
-	blacklistedTags = ["TITLE", "STYLE", "LINK", "TEMPLATE", "SCRIPT", "IMG"];
+	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "LINK", "TEMPLATE"];
 	emoteList = {
+
+		// Global Twitch Emotes
 		"4Head": "https://static-cdn.jtvnw.net/emoticons/v1/354/1.0",
 		"ANELE": "https://static-cdn.jtvnw.net/emoticons/v1/3792/1.0",
 		"BabyRage": "https://static-cdn.jtvnw.net/emoticons/v1/22639/1.0",
@@ -48,6 +50,8 @@ function onLoad() {
 		"VoteNay": "https://static-cdn.jtvnw.net/emoticons/v1/106294/1.0",
 		"VoteYea": "https://static-cdn.jtvnw.net/emoticons/v1/106293/1.0",
 		"WutFace": "https://static-cdn.jtvnw.net/emoticons/v1/28087/1.0",
+
+		// BTTV Emotes
 		"PedoBear": "https://cdn.betterttv.net/emote/54fa928f01e468494b85b54f/1x",
 		"CiGrip": "https://cdn.betterttv.net/emote/54fa8fce01e468494b85b53c/1x",
 		"GabeN": "https://cdn.betterttv.net/emote/54fa90ba01e468494b85b543/1x",
@@ -71,10 +75,17 @@ function onLoad() {
 		"HAhaa": "https://cdn.betterttv.net/emote/55f47f507f08be9f0a63ce37/1x",
 		"ZULUL": "https://cdn.betterttv.net/emote/57b38e53d5472c5343820619/1x",
 		"gachiBASS": "https://cdn.betterttv.net/emote/57719a9a6bdecd592c3ad59b/1x",
-		"Clap": "https://cdn.betterttv.net/emote/55b6f480e66682f576dd94f5/1x"
+		"Clap": "https://cdn.betterttv.net/emote/55b6f480e66682f576dd94f5/1x",
+
+		// FrankerFaceZ Emotes
+		"PagChomp": "https://cdn.frankerfacez.com/emoticon/61496/1",
+		"4HEad": "https://cdn.frankerfacez.com/emoticon/165783/1",
+		"HYPERBRUH": "https://cdn.frankerfacez.com/emoticon/204717/1",
+		"monkaGun": "https://cdn.frankerfacez.com/emoticon/187256/1"
+
 	};
 	for (var emoteName in emoteList) {
-		emoteList[emoteName] = "<img src=\"" + emoteList[emoteName] + "\"\\>";
+		emoteList[emoteName] = "<img style=\"max-height: 32px;\"src=\"" + emoteList[emoteName] + "\"\\>";
 	}
 	startReplaceLoop();
 }
@@ -85,8 +96,9 @@ function startReplaceLoop() {
 	});
 }
 
-function replacePhrasesWithEmotes(element, elementTagName, elementContent) {
-	if (blacklistedTags.indexOf(elementTagName) < 0) {		
+function replacePhrasesWithEmotes(element, elementTagName, elementContent) {	
+	if (blacklistedTags.indexOf(elementTagName) < 0) {
+		console.log(elementTagName);
 		for (var emoteName in emoteList) {
 			var emoteImg = emoteList[emoteName];
 			var regExp = new RegExp("\\b" + emoteName + "\\b", "g");

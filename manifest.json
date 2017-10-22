@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "TwitchEmotes",
 	"version": "1.0",
-	"description": "Replaces Twitch emote phrases with emote images",
+	"description": "Twitch emotes everywhere!",
 	"icons": {
 		"128": "icon.png" 
 	},
