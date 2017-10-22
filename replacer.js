@@ -3,7 +3,7 @@ var blacklistedTags;
 var emoteList;
 
 function onLoad() {
-	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE", "DIV"];
+	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE"];
 	emoteList = {
 
 		// Twitch Emotes
