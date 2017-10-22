@@ -7,7 +7,7 @@ function onLoad() {
 	emoteList = {
 
 		// Twitch Emotes
-		"4Head": ["https://static-cdn.jtvnw.net/emoticons/v1/354/1.0", "gi"],
+		"4Head": ["https://static-cdn.jtvnw.net/emoticons/v1/354/1.0", "g"],
 		"ANELE": ["https://static-cdn.jtvnw.net/emoticons/v1/3792/1.0", "gi"],
 		"BabyRage": ["https://static-cdn.jtvnw.net/emoticons/v1/22639/1.0", "gi"],
 		"BibleThump": ["https://static-cdn.jtvnw.net/emoticons/v1/86/1.0", "gi"],
@@ -79,7 +79,7 @@ function onLoad() {
 
 		// FrankerFaceZ Emotes
 		"PagChomp": ["https://cdn.frankerfacez.com/emoticon/61496/1", "gi"],
-		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "gi"],
+		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "g"],
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "gi"],
 		"monkaGun": ["https://cdn.frankerfacez.com/emoticon/187256/1", "gi"],
 
