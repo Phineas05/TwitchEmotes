@@ -1,8 +1,9 @@
 # TwitchEmotes
 
-A Google Chrome plugin that replaces Twitch emote phrases with emote images.
+A Google Chrome plugin that replaces [Twitch](https://www.twitch.tv) emote phrases with emote images.  
+Includes support for select Twitch, [BetterTTV](https://nightdev.com/betterttv) and [FrankerFaceZ](https://www.frankerfacez.com) emotes.
 
-## Instructions
+## Installation Instructions
 
 1. Click on "Clone or download" and select "Download ZIP"
 2. Extract the folder contained in the ZIP file
