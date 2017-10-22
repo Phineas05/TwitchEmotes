@@ -76,12 +76,13 @@ function onLoad() {
 		"ZULUL": ["https://cdn.betterttv.net/emote/57b38e53d5472c5343820619/1x", "gi"],
 		"gachiBASS": ["https://cdn.betterttv.net/emote/57719a9a6bdecd592c3ad59b/1x", "gi"],
 		"Clap": ["https://cdn.betterttv.net/emote/55b6f480e66682f576dd94f5/1x", "gi"],
+		"KKool": ["https://cdn.betterttv.net/emote/56c2cff2d9ec6bf744247bf1/1x", "gi"],
 
 		// FrankerFaceZ Emotes
 		"PagChomp": ["https://cdn.frankerfacez.com/emoticon/61496/1", "gi"],
 		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "g"],
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "gi"],
-		"monkaGun": ["https://cdn.frankerfacez.com/emoticon/187256/1", "gi"],
+		"monkaGun": ["https://cdn.frankerfacez.com/emoticon/187256/1", "gi"]
 
 	};
 	for (var emoteName in emoteList) {
