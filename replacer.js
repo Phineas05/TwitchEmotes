@@ -55,7 +55,6 @@ function onLoad() {
 		"CiGrip": ["https://cdn.betterttv.net/emote/54fa8fce01e468494b85b53c/1x", "gi"],
 		"GabeN": ["https://cdn.betterttv.net/emote/54fa90ba01e468494b85b543/1x", "gi"],
 		"AngelThump": ["https://cdn.betterttv.net/emote/566ca1a365dbbdab32ec055b/1x", "gi"],
-		"D:": ["https://cdn.betterttv.net/emote/55028cd2135896936880fdd7/1x", "gi"],
 		"VisLaud": ["https://cdn.betterttv.net/emote/550352766f86a5b26c281ba2/1x", "gi"],
 		"KKona": ["https://cdn.betterttv.net/emote/566ca04265dbbdab32ec054a/1x", "gi"],
 		"haHAA": ["https://cdn.betterttv.net/emote/555981336ba1901877765555/1x", "g"],
@@ -107,7 +106,8 @@ function startReplaceLoop() {
 		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
    }).each(function() {
 		$(this).contents().filter(function() {
-			 return (this.nodeType == 3);
+			var testRegEx = /^\w+$/gi;
+			return (this.nodeType == 3 && testRegEx.test(this.textContent));
 		}).each(function() {
 			replacePhrasesWithEmotes(this);
 		});
@@ -116,6 +116,7 @@ function startReplaceLoop() {
 
 function replacePhrasesWithEmotes(element, elementContent) {
 	var elementContent = element.textContent;
+	console.log(elementContent);
 	for (var emoteName in emoteList) {
 		var emoteImg = emoteList[emoteName][0];
 		var regExp = new RegExp("\\b" + emoteName + "\\b", emoteList[emoteName][1]);
