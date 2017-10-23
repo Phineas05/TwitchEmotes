@@ -4,10 +4,10 @@
 	"version": "1.0",
 	"description": "Displays select Twitch, BetterTTV and FrankerFaceZ emotes on all sites.",
 	"icons": {
-		"128": "icon.png" 
+		"128": "icon.png"
 	},
 	"content_scripts": [{
-		"matches": ["<all_urls>"], 
+		"matches": ["<all_urls>"],
 		"js": ["jquery-3.2.1.min.js", "replacer.js"]
 	}]
 }

@@ -107,7 +107,7 @@ function onLoad() {
 		mutations.forEach(function(mutation) {
 			for (var i = 0; i < mutation.addedNodes.length; ++i) {
 				var currentNode = mutation.addedNodes[i];
-				$(currentNode).find("*").contents().filter(function() { 					
+				$(currentNode).find("*").contents().filter(function() {
 					return (this.nodeType == 3 && this.textContent.match(nodeTestRegEx));
 				}).each(function() {
 					replacePhrasesWithEmotes(this);
