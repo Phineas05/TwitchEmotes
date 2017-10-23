@@ -11,7 +11,7 @@ Coming Soon
 
 ### Packed Extension (crx)
 
-Extensions installed this way, if not published on the Chrome Web Store, will be automatically permanently disabled after a while.
+Extensions installed this way, if not published on the Chrome Web Store, will be automatically disabled after a while. Such extensions cannot be re-enabled without being reinstalled.
 
 1. Download [TwitchEmotes.crx](https://github.com/Phineas05/TwitchEmotes/raw/master/TwitchEmotes.crx)
 2. Drag and drop the downloaded packed extension file into Google Chrome's extension manager (chrome://extensions)
@@ -19,7 +19,7 @@ Extensions installed this way, if not published on the Chrome Web Store, will be
 
 ### Developer Mode
 
-When installed this way, a warning to disable developer mode extensions will be displayed every time Chrome is started.
+When installed this way, a warning to disable developer mode extensions will be displayed every time Chrome is launched.
 
 1. Click "Clone or download" and select "[Download ZIP](https://github.com/Phineas05/TwitchEmotes/archive/master.zip)"
 2. Extract the folder contained in the ZIP file
