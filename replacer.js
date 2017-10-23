@@ -88,6 +88,18 @@ function onLoad() {
 		emoteList[emoteName][0] = "<img style=\"max-height: 32px;\" title=\"" + emoteName + "\" alt=\"" + emoteName + "\" src=\"" + emoteList[emoteName][0] + "\"\\>";
 	}
 	startReplaceLoop();
+	var mutationObserver = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			for (var i = 0; i < mutation.addedNodes.length; ++i) {
+				var currentNode = mutation.addedNodes[i];
+				$(currentNode).find("*").contents().filter(function() { return this.nodeType == 3; }).each(function() {
+					replacePhrasesWithEmotes(this);
+				});
+			}
+		});
+	});
+	var observerConfig = {attributes: false, childList: true, characterData: true, subtree: true};
+	mutationObserver.observe(document.body, observerConfig);
 }
 
 function startReplaceLoop() {
