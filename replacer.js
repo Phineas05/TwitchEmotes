@@ -55,7 +55,6 @@ function onLoad() {
 		"cmonBruh": ["https://static-cdn.jtvnw.net/emoticons/v1/84608/1.0", "gi"],
 
 		// BetterTTV Emotes
-		"(puke)": ["https://cdn.betterttv.net/emote/550288fe135896936880fdd4/1x", "gi"],
 		"AngelThump": ["https://cdn.betterttv.net/emote/566ca1a365dbbdab32ec055b/1x", "gi"],
 		"BBaper": ["https://cdn.betterttv.net/emote/592bee30e9f5aa0463766a0d/1x", "gi"],
 		"BasedGod": ["https://cdn.betterttv.net/emote/566c9eeb65dbbdab32ec052b/1x", "gi"],
@@ -66,6 +65,7 @@ function onLoad() {
 		"DogePls": ["https://cdn.betterttv.net/emote/55c7eb723d8fd22f20ac9cc1/1x", "gi"],
 		"DuckerZ": ["https://cdn.betterttv.net/emote/573d38b50ffbf6cc5cc38dc9/1x", "gi"],
 		"EZ": ["https://cdn.betterttv.net/emote/5590b223b344e2c42a9e28e3/1x", "gi"],
+		"EatPooPoo": ["https://cdn.betterttv.net/emote/5903ae40981c752327938935/1x", "gi"],
 		"FeelsAmazingMan": ["https://cdn.betterttv.net/emote/5733ff12e72c3c0814233e20/1x", "gi"],
 		"FeelsBadMan": ["https://cdn.betterttv.net/emote/566c9fc265dbbdab32ec053b/1x", "gi"],
 		"FeelsBirthdayMan": ["https://cdn.betterttv.net/emote/55b6524154eefd53777b2580/1x", "gi"],
@@ -102,6 +102,7 @@ function onLoad() {
 		"monkaS": ["https://cdn.betterttv.net/emote/56e9f494fff3cc5c35e5287e/1x", "gi"],
 		"monkaX": ["https://cdn.betterttv.net/emote/58e5abdaf3ef4c75c9c6f0f9/1x", "gi"],
 		"nymnCorn": ["https://cdn.betterttv.net/emote/56cb56f5500cb4cf51e25b90/1x", "gi"],
+		"puke": ["https://cdn.betterttv.net/emote/550288fe135896936880fdd4/1x", "gi"],
 		"qtpPLS": ["https://cdn.betterttv.net/emote/573b563409562f714ef27c32/1x", "gi"],
 
 		// FrankerFaceZ Emotes
@@ -110,6 +111,7 @@ function onLoad() {
 		"FeelsRageMan": ["https://cdn.frankerfacez.com/emoticon/53418/1", "gi"],
 		"FeelsWeirdMan": ["https://cdn.frankerfacez.com/emoticon/131597/1", "gi"],
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "gi"],
+		"HandsUp": ["https://cdn.frankerfacez.com/emoticon/168711/1", "gi"],
 		"KKomrade": ["https://cdn.frankerfacez.com/emoticon/145916/1", "gi"],
 		"KKonaW": ["https://cdn.frankerfacez.com/emoticon/157420/1", "gi"],
 		"LULW": ["https://cdn.frankerfacez.com/emoticon/139407/1", "gi"],
