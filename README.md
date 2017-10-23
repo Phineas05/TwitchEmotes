@@ -21,4 +21,4 @@ Extensions installed this way, if not published on the Chrome Web Store, will be
 4. Tick the "Developer mode" checkbox
 5. Click "Load unpacked extension...", select the extracted folder and click OK
 
-A warning to disable developer mode extensions will be displayed every time Chrome is started.
+When installed this way, a warning to disable developer mode extensions will be displayed every time Chrome is started.
