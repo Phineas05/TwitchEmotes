@@ -1,11 +1,13 @@
 window.document.onload = onLoad();
+var host;
 var nodeTestRegEx;
 var blacklistedTags;
 var emoteList;
 
 function onLoad() {
+	host = window.location.hostname;
 	nodeTestRegEx = /\w+?/gi;
-	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE"];
+	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE", "INPUT"];
 	emoteList = {
 
 		// Twitch Emotes
@@ -127,5 +129,11 @@ function replacePhrasesWithEmotes(element) {
 	}
 	if (element.textContent != elementContent) {
 		$(element).replaceWith(elementContent);
+		if (host == "www.twitch.tv") {
+			if (!$(".more-messages-indicator").is(":visible")) {
+				scrollElement = $(".chat-messages").find(".tse-scroll-content");
+				$(scrollElement).scrollTop($(scrollElement).scrollHeight);
+			}
+		}
 	}
 }
