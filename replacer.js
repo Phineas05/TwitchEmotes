@@ -103,13 +103,14 @@ function onLoad() {
 }
 
 function startReplaceLoop() {
-	$("body *").each(function() {
-		elementTagName = $(this).prop("tagName");
-		if (blacklistedTags.indexOf(elementTagName) < 0) {
-			$(this).contents().filter(function() { return this.nodeType == 3; }).each(function() {
-				replacePhrasesWithEmotes(this);
-			});
-		}
+	$("body *").filter(function() {
+		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
+   }).each(function() {
+		$(this).contents().filter(function() {
+			 return (this.nodeType == 3);
+		}).each(function() {
+			replacePhrasesWithEmotes(this);
+		});
 	});
 }
 
