@@ -111,7 +111,7 @@ function onLoad() {
 function startReplaceLoop() {
 	$("body *").filter(function() {
 		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
-   }).each(function() {
+	}).each(function() {
 		$(this).contents().filter(function() {
 			return (this.nodeType == 3 && this.textContent.match(nodeTestRegEx));
 		}).each(function() {
