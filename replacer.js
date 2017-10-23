@@ -95,7 +95,7 @@ function onLoad() {
 			for (var i = 0; i < mutation.addedNodes.length; ++i) {
 				var currentNode = mutation.addedNodes[i];
 				$(currentNode).find("*").contents().filter(function() { 					
-					return (this.nodeType == 3 && nodeTestRegEx.test(this.textContent));
+					return (this.nodeType == 3 && this.textContent.match(nodeTestRegEx));
 				}).each(function() {
 					replacePhrasesWithEmotes(this);
 				});
@@ -111,7 +111,7 @@ function startReplaceLoop() {
 		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
    }).each(function() {
 		$(this).contents().filter(function() {
-			return (this.nodeType == 3 && nodeTestRegEx.test(this.textContent));
+			return (this.nodeType == 3 && this.textContent.match(nodeTestRegEx));
 		}).each(function() {
 			replacePhrasesWithEmotes(this);
 		});
