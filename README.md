@@ -1,6 +1,6 @@
 # TwitchEmotes
 
-A Google Chrome extension that replaces [Twitch](https://www.twitch.tv) emote phrases with emote images.  
+A Google Chrome extension that replaces certain text with emotes. 
 Includes support for select [Twitch](https://www.twitch.tv), [BetterTTV](https://nightdev.com/betterttv) and [FrankerFaceZ](https://www.frankerfacez.com) emotes.
 
 ## Installation Instructions
@@ -19,7 +19,7 @@ Any extension installed from a CRX Package that has not been published on the Ch
 
 ### Developer Mode Extension
 
-When installed this way, a warning prompt will be displayed every time Chrome is launched, suggesting that the extensions running in developer mode should be disabled.
+When installed this way, a warning prompt will be displayed every time Chrome is launched, suggesting that extensions running in developer mode should be disabled.
 
 1. Click "Clone or download" and select "[Download ZIP](https://github.com/Phineas05/TwitchEmotes/archive/master.zip)"
 2. Extract the folder contained in the ZIP file
