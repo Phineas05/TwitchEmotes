@@ -1,8 +1,10 @@
 window.document.onload = onLoad();
+var nodeTestRegEx;
 var blacklistedTags;
 var emoteList;
 
 function onLoad() {
+	nodeTestRegEx = /\w+/gi;
 	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE"];
 	emoteList = {
 
@@ -82,7 +84,7 @@ function onLoad() {
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "gi"],
 		"monkaGun": ["https://cdn.frankerfacez.com/emoticon/187256/1", "gi"],
 		"PepeHands": ["https://cdn.frankerfacez.com/emoticon/188326/1", "gi"]
-		
+
 	};
 	for (var emoteName in emoteList) {
 		emoteList[emoteName][0] = "<img style=\"max-height: 32px;\" title=\"" + emoteName + "\" alt=\"" + emoteName + "\" src=\"" + emoteList[emoteName][0] + "\"\\>";
@@ -92,9 +94,8 @@ function onLoad() {
 		mutations.forEach(function(mutation) {
 			for (var i = 0; i < mutation.addedNodes.length; ++i) {
 				var currentNode = mutation.addedNodes[i];
-				$(currentNode).find("*").contents().filter(function() { 
-					var testRegEx = /^\w+$/gi;
-					return (this.nodeType == 3 && testRegEx.test(this.textContent));
+				$(currentNode).find("*").contents().filter(function() { 					
+					return (this.nodeType == 3 && nodeTestRegEx.test(this.textContent));
 				}).each(function() {
 					replacePhrasesWithEmotes(this);
 				});
@@ -110,15 +111,14 @@ function startReplaceLoop() {
 		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
    }).each(function() {
 		$(this).contents().filter(function() {
-			var testRegEx = /^\w+$/gi;
-			return (this.nodeType == 3 && testRegEx.test(this.textContent));
+			return (this.nodeType == 3 && nodeTestRegEx.test(this.textContent));
 		}).each(function() {
 			replacePhrasesWithEmotes(this);
 		});
 	});
 }
 
-function replacePhrasesWithEmotes(element, elementContent) {
+function replacePhrasesWithEmotes(element) {
 	var elementContent = element.textContent;
 	for (var emoteName in emoteList) {
 		var emoteImg = emoteList[emoteName][0];
