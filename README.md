@@ -16,7 +16,7 @@ Extensions installed this way, if not published on the Chrome Web Store, will be
 1. Download [TwitchEmotes.crx](https://github.com/Phineas05/TwitchEmotes/raw/master/TwitchEmotes.crx)
 2. Drag and drop the downloaded packed extension file into Google Chrome's extension manager (chrome://extensions)
 
-### Manual Installation
+### Developer Mode
 
 When installed this way, a warning to disable developer mode extensions will be displayed every time Chrome is started.
 
