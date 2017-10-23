@@ -80,8 +80,9 @@ function onLoad() {
 		"PagChomp": ["https://cdn.frankerfacez.com/emoticon/61496/1", "gi"],
 		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "g"],
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "gi"],
-		"monkaGun": ["https://cdn.frankerfacez.com/emoticon/187256/1", "gi"]
-
+		"monkaGun": ["https://cdn.frankerfacez.com/emoticon/187256/1", "gi"],
+		"PepeHands": ["https://cdn.frankerfacez.com/emoticon/188326/1", "gi"]
+		
 	};
 	for (var emoteName in emoteList) {
 		emoteList[emoteName][0] = "<img style=\"max-height: 32px;\" title=\"" + emoteName + "\" alt=\"" + emoteName + "\" src=\"" + emoteList[emoteName][0] + "\"\\>";
@@ -91,7 +92,10 @@ function onLoad() {
 		mutations.forEach(function(mutation) {
 			for (var i = 0; i < mutation.addedNodes.length; ++i) {
 				var currentNode = mutation.addedNodes[i];
-				$(currentNode).find("*").contents().filter(function() { return this.nodeType == 3; }).each(function() {
+				$(currentNode).find("*").contents().filter(function() { 
+					var testRegEx = /^\w+$/gi;
+					return (this.nodeType == 3 && testRegEx.test(this.textContent));
+				}).each(function() {
 					replacePhrasesWithEmotes(this);
 				});
 			}
@@ -116,7 +120,6 @@ function startReplaceLoop() {
 
 function replacePhrasesWithEmotes(element, elementContent) {
 	var elementContent = element.textContent;
-	console.log(elementContent);
 	for (var emoteName in emoteList) {
 		var emoteImg = emoteList[emoteName][0];
 		var regExp = new RegExp("\\b" + emoteName + "\\b", emoteList[emoteName][1]);
