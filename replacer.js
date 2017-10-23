@@ -132,7 +132,7 @@ function replacePhrasesWithEmotes(element) {
 		if (host == "www.twitch.tv") {
 			if (!$(".more-messages-indicator").is(":visible")) {
 				scrollElement = $(".chat-messages").find(".tse-scroll-content");
-				$(scrollElement).scrollTop($(scrollElement).scrollHeight);
+				$(scrollElement).scrollTop($(scrollElement)[0].scrollHeight + 100);
 			}
 		}
 	}
