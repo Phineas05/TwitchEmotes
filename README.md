@@ -9,15 +9,15 @@ Includes support for select [Twitch](https://www.twitch.tv), [BetterTTV](https:/
 
 Coming Soon
 
-### Packed Extension (crx)
+### CRX Package (Packed Extension)
 
-Extensions installed this way, if not published on the Chrome Web Store, will be automatically disabled after a while. Such extensions cannot be re-enabled without being reinstalled.
+Any extension installed from a CRX Package that has not been published on the Chrome Web Store will be automatically disabled after a while. These extensions cannot be re-enabled unless they are reinstalled.
 
 1. Download [TwitchEmotes.crx](https://github.com/Phineas05/TwitchEmotes/raw/master/TwitchEmotes.crx)
 2. Drag and drop the downloaded packed extension file into Google Chrome's extension manager (chrome://extensions)
 3. Click "Add extension"
 
-### Developer Mode
+### Developer Mode Extension
 
 When installed this way, a warning to disable developer mode extensions will be displayed every time Chrome is launched.
 
