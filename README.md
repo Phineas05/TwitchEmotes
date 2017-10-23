@@ -15,6 +15,7 @@ Extensions installed this way, if not published on the Chrome Web Store, will be
 
 1. Download [TwitchEmotes.crx](https://github.com/Phineas05/TwitchEmotes/raw/master/TwitchEmotes.crx)
 2. Drag and drop the downloaded packed extension file into Google Chrome's extension manager (chrome://extensions)
+3. Click "Add extension"
 
 ### Developer Mode
 
