@@ -4,7 +4,7 @@ var blacklistedTags;
 var emoteList;
 
 function onLoad() {
-	nodeTestRegEx = /\w+/gi;
+	nodeTestRegEx = /\w+?/gi;
 	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE"];
 	emoteList = {
 
