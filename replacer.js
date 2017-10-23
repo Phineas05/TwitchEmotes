@@ -12,7 +12,6 @@ function onLoad() {
 		"BabyRage": ["https://static-cdn.jtvnw.net/emoticons/v1/22639/1.0", "gi"],
 		"BibleThump": ["https://static-cdn.jtvnw.net/emoticons/v1/86/1.0", "gi"],
 		"BigBrother": ["https://static-cdn.jtvnw.net/emoticons/v1/1904/1.0", "gi"],
-		"Kappa": ["https://static-cdn.jtvnw.net/emoticons/v1/25/1.0", "gi"],
 		"BlessRNG": ["https://static-cdn.jtvnw.net/emoticons/v1/153556/1.0", "gi"],
 		"BrokeBack": ["https://static-cdn.jtvnw.net/emoticons/v1/4057/1.0", "gi"],
 		"CoolCat": ["https://static-cdn.jtvnw.net/emoticons/v1/58127/1.0", "gi"],
