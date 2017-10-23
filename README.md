@@ -12,8 +12,9 @@ Includes support for select [Twitch](https://www.twitch.tv), [BetterTTV](https:/
 4. Tick the "Developer mode" checkbox
 5. Click "Load unpacked extension...", select the extracted folder and click OK
 
-### Packed Chrome Extension (crx)
-[TwitchEmotes.crx](https://github.com/Phineas05/TwitchEmotes/raw/master/TwitchEmotes.crx)
+### Packed Extension (crx)
+1. Download [TwitchEmotes.crx](https://github.com/Phineas05/TwitchEmotes/raw/master/TwitchEmotes.crx)
+2. Drag and drop the downloaded packed extension file into Google Chrome's extension manager (chrome://extensions)
 
 ### Chrome Web Store
 Coming Soon
