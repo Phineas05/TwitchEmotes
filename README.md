@@ -30,7 +30,7 @@ When installed this way, a warning prompt will be displayed every time Chrome is
 
 ## Credits
 
-* [Google Chrome](https://www.google.com/chrome) by [Google Inc.](https://www.google.co.in/intl/en/about)
+* [Google Chrome](https://www.google.com/chrome) by [Google Inc.](https://www.google.com/about)
 * [Twitch.tv](https://www.twitch.tv) by [Twitch Interactive](https://www.twitch.tv/p/about)
 * [BetterTTV](https://nightdev.com/betterttv) by [NightDev LLC](https://nightdev.com)
 * [FrankerFaceZ](https://www.frankerfacez.com) by [Dan Salvato LLC](https://www.frankerfacez.com/contact)
