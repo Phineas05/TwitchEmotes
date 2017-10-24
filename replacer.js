@@ -2,12 +2,17 @@ window.document.onload = onLoad();
 var host;
 var nodeTestRegEx;
 var blacklistedTags;
+var blacklistedHosts;
 var emoteList;
 
 function onLoad() {
 	host = window.location.hostname;
 	nodeTestRegEx = /\w+?/gi;
 	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "IFRAME", "LINK", "TEMPLATE", "INPUT"];
+	blacklistedHosts = [];
+	if (blacklistedHosts.indexOf(host) >= 0) {
+		return;
+	}
 	emoteList = {
 
 		// Twitch Emotes
@@ -99,6 +104,7 @@ function onLoad() {
 		"haHAA": ["https://cdn.betterttv.net/emote/555981336ba1901877765555/1x", "g"],
 		"monkaGun": ["https://cdn.betterttv.net/emote/58f6e05e58f5dd226a16166e/1x", "gi"],
 		"monkaMEGA": ["https://cdn.betterttv.net/emote/58903da0b3b0df756ac3e64e/1x", "gi"],
+		"monkaOMEGA": ["https://cdn.betterttv.net/emote/5981e21aeaab4f3320e73abe/1x", "gi"],
 		"monkaS": ["https://cdn.betterttv.net/emote/56e9f494fff3cc5c35e5287e/1x", "gi"],
 		"monkaX": ["https://cdn.betterttv.net/emote/58e5abdaf3ef4c75c9c6f0f9/1x", "gi"],
 		"nymnCorn": ["https://cdn.betterttv.net/emote/56cb56f5500cb4cf51e25b90/1x", "gi"],
@@ -120,6 +126,7 @@ function onLoad() {
 		"PepeLaugh": ["https://cdn.frankerfacez.com/emoticon/64785/1", "gi"],
 		"PepeRIP": ["https://cdn.frankerfacez.com/emoticon/61091/1", "gi"],
 		"PepoThink": ["https://cdn.frankerfacez.com/emoticon/174942/1", "gi"],
+		"REEeee": ["https://cdn.frankerfacez.com/emoticon/116831/1", "g"],
 		"SmugPepe": ["https://cdn.frankerfacez.com/emoticon/12042/1", "gi"]
 
 	};
@@ -167,6 +174,11 @@ function replacePhrasesWithEmotes(element) {
 		if (host == "www.twitch.tv") {
 			if (!$(".more-messages-indicator").is(":visible")) {
 				scrollElement = $(".chat-messages").find(".tse-scroll-content");
+				$(scrollElement).scrollTop($(scrollElement)[0].scrollHeight + 100);
+			}
+		} else if (host == "clips.twitch.tv") {
+			if (!$(".view-clip__scrollButton").is(":visible")) {
+				scrollElement = $(".view-clip__main");
 				$(scrollElement).scrollTop($(scrollElement)[0].scrollHeight + 100);
 			}
 		}
