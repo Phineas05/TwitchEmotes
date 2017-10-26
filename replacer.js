@@ -113,6 +113,8 @@ function onLoad() {
 
 		// FrankerFaceZ Emotes
 		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "g"],
+		"BBona": ["https://cdn.frankerfacez.com/emoticon/186727/1", "gi"],
+		"EZY": ["https://cdn.frankerfacez.com/emoticon/185890/1", "gi"],
 		"FeelsOkayMan": ["https://cdn.frankerfacez.com/emoticon/145947/1", "gi"],
 		"FeelsRageMan": ["https://cdn.frankerfacez.com/emoticon/53418/1", "gi"],
 		"FeelsWeirdMan": ["https://cdn.frankerfacez.com/emoticon/131597/1", "gi"],
@@ -120,6 +122,7 @@ function onLoad() {
 		"HandsUp": ["https://cdn.frankerfacez.com/emoticon/168711/1", "gi"],
 		"KKomrade": ["https://cdn.frankerfacez.com/emoticon/145916/1", "gi"],
 		"KKonaW": ["https://cdn.frankerfacez.com/emoticon/157420/1", "gi"],
+		"Kapp": ["https://cdn.frankerfacez.com/emoticon/218860/1", "gi"],
 		"LULW": ["https://cdn.frankerfacez.com/emoticon/139407/1", "gi"],
 		"PagChomp": ["https://cdn.frankerfacez.com/emoticon/61496/1", "gi"],
 		"PepeHands": ["https://cdn.frankerfacez.com/emoticon/188326/1", "gi"],
@@ -127,7 +130,8 @@ function onLoad() {
 		"PepeRIP": ["https://cdn.frankerfacez.com/emoticon/61091/1", "gi"],
 		"PepoThink": ["https://cdn.frankerfacez.com/emoticon/174942/1", "gi"],
 		"REEeee": ["https://cdn.frankerfacez.com/emoticon/116831/1", "g"],
-		"SmugPepe": ["https://cdn.frankerfacez.com/emoticon/12042/1", "gi"]
+		"SmugPepe": ["https://cdn.frankerfacez.com/emoticon/12042/1", "gi"],
+		"ZULOL": ["https://cdn.frankerfacez.com/emoticon/218588/1", "gi"]
 
 	};
 	for (var emoteName in emoteList) {
