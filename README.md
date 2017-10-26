@@ -20,7 +20,7 @@ Any extension installed from a CRX Package that has not been published on the Ch
 
 ### Developer Mode Extension
 
-When installed this way, a warning prompt will be displayed every time Chrome is launched, suggesting that extensions running in developer mode should be disabled.
+When installed this way, a warning prompt will be displayed every time Chrome is launched, stating that extensions running in developer mode should be disabled.
 
 1. Click "Clone or download" and select "[Download ZIP](https://github.com/Phineas05/TwitchEmotes/archive/master.zip)"
 2. Extract the folder contained in the ZIP file
