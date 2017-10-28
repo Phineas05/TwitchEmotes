@@ -8,7 +8,7 @@ Includes support for select [Twitch](https://www.twitch.tv), [BetterTTV](https:/
 
 ### Chrome Web Store
 
-Coming Soon
+[TwitchEmotes](https://chrome.google.com/webstore/detail/kjjlajpjmldgolobcakncgeoaofcgkom)
 
 ### CRX Package (Packed Extension)
 
