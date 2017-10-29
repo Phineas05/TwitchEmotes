@@ -178,7 +178,15 @@ function replacePhrasesWithEmotes(element) {
 		if (host == "www.twitch.tv") {
 			if (!$(".more-messages-indicator").is(":visible")) {
 				scrollElement = $(".chat-messages").find(".tse-scroll-content");
-				$(scrollElement).scrollTop($(scrollElement)[0].scrollHeight + 100);
+				if (scrollElement.length > 0) {
+					$(scrollElement).scrollTop($(scrollElement)[0].scrollHeight + 100);
+				}
+			}
+			if (!$(".video-chat__sync-button").is(":visible")) {
+				scrollElement = $(".video-chat__message-list-wrapper");
+				if (scrollElement.length > 0) {
+					$(scrollElement).scrollTop($(scrollElement)[0].scrollHeight + 100);
+				}
 			}
 		} else if (host == "clips.twitch.tv") {
 			if (!$(".view-clip__scrollButton").is(":visible")) {
