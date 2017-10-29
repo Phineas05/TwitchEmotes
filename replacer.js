@@ -8,7 +8,7 @@ var emoteList;
 function onLoad() {
 	host = window.location.hostname;
 	nodeTestRegEx = /\w+?/gi;
-	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "LINK", "TEMPLATE", "INPUT"];
+	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "LINK", "TEMPLATE", "INPUT", "IFRAME"];
 	blacklistedHosts = [];
 	if (blacklistedHosts.indexOf(host) >= 0) {
 		return;
