@@ -22,7 +22,7 @@ When installed this way, a warning prompt will be displayed every time Chrome is
 
 ## License
 
-TwitchEmotes is licensed under the [MIT License](https://github.com/Phineas05/TwitchEmotes/blob/master/LICENSE).
+TwitchEmotes is licensed under the MIT License. See the [LICENSE](https://github.com/Phineas05/TwitchEmotes/blob/master/LICENSE) file for details.
 
 ## Credits
 
