@@ -181,7 +181,9 @@ function replacePhrasesWithEmotes(element) {
 	for (var emoteName in emoteList) {
 		var emoteImg = emoteList[emoteName][0];
 		var eName = emoteName;
-		if ((eName.indexOf(":") < 0) && (eName.indexOf("(") < 0)) {
+		if (eName.indexOf(":") > 0) {
+			eName = "\\b" + eName;
+		} else if (eName.indexOf("(") < 0) {
 			eName = "\\b" + eName + "\\b";
 		}
 		var regExp = new RegExp(eName, emoteList[emoteName][1]);
