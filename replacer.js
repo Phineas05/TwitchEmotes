@@ -80,6 +80,8 @@ function onLoad() {
 		"FeelsBirthdayMan": ["https://cdn.betterttv.net/emote/55b6524154eefd53777b2580/1x", "g"],
 		"FeelsGoodMan": ["https://cdn.betterttv.net/emote/566c9fde65dbbdab32ec053e/1x", "g"],
 		"FeelsSadMan": ["https://cdn.betterttv.net/emote/5613b7ca141069f91f48acca/1x", "g"],
+		"FireSpeed": ["https://cdn.betterttv.net/emote/566c9ff365dbbdab32ec0541/1x", "g"],
+		"FishMoley": ["https://cdn.betterttv.net/emote/566ca00f65dbbdab32ec0544/1x", "g"],
 		"forsenPls": ["https://cdn.betterttv.net/emote/55e2096ea6fa8b261f81b12a/1x", "g"],
 		"forsenSWA": ["https://cdn.betterttv.net/emote/571647c4793a158658202e2e/1x", "g"],
 		"GabeN": ["https://cdn.betterttv.net/emote/54fa90ba01e468494b85b543/1x", "g"],
@@ -114,8 +116,10 @@ function onLoad() {
 		"RareSloth": ["https://cdn.betterttv.net/emote/56841a3e69f91c294d13b072/1x", "g"],
 		"RarestParrot": ["https://cdn.betterttv.net/emote/56a6316731f511db3dde2042/1x", "g"],
 		"SourPls": ["https://cdn.betterttv.net/emote/566ca38765dbbdab32ec0560/1x", "g"],
+		"TaxiBro": ["https://cdn.betterttv.net/emote/54fbefeb01abde735115de5b/1x", "g"],
 		"Thonk": ["https://cdn.betterttv.net/emote/585231dd58af204561cd6036/1x", "g"],
 		"ULTRALUL": ["https://cdn.betterttv.net/emote/57ae40399b8a4bbb723ee551/1x", "g"],
+		"VapeNation": ["https://cdn.betterttv.net/emote/56f5be00d48006ba34f530a4/1x", "g"],
 		"VisLaud": ["https://cdn.betterttv.net/emote/550352766f86a5b26c281ba2/1x", "g"],
 		"Wowee": ["https://cdn.betterttv.net/emote/58d2e73058d8950a875ad027/1x", "g"],
 		"ZULUL": ["https://cdn.betterttv.net/emote/57b38e53d5472c5343820619/1x", "g"],
@@ -142,16 +146,30 @@ function onLoad() {
 		"PepeLaugh": ["https://cdn.frankerfacez.com/emoticon/64785/1", "g"],
 		"PepeRIP": ["https://cdn.frankerfacez.com/emoticon/61091/1", "g"],
 		"PepoThink": ["https://cdn.frankerfacez.com/emoticon/174942/1", "g"],
+		"Pog": ["https://cdn.frankerfacez.com/emoticon/210748/1", "g"],
 		"REEeee": ["https://cdn.frankerfacez.com/emoticon/116831/1", "g"],
 		"SmugPepe": ["https://cdn.frankerfacez.com/emoticon/12042/1", "g"],
 		"SunWithFaceClap": ["https://cdn.frankerfacez.com/emoticon/219659/1", "g"],
-		"ZULOL": ["https://cdn.frankerfacez.com/emoticon/218588/1", "g"]
+		"TriEasy": ["https://cdn.frankerfacez.com/emoticon/25122/1", "g"],
+		"ZULOL": ["https://cdn.frankerfacez.com/emoticon/218588/1", "g"],
+
+		// Unicode Emotes
+		":dagger:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/dagger-knife_1f5e1.png", "g", "20"],
+		":gun:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/pistol_1f52b.png", "g", "20"],
+		":rage:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/pouting-face_1f621.png", "g", "20"],
+		":shield:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/shield_1f6e1.png", "g", "20"],
+		":sun_with_face:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/sun-with-face_1f31e.png", "g", "20"],
+		":thinking:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/apple/114/thinking-face_1f914.png", "g", "20"]
 
 	};
 	for (var emoteName in emoteList) {
-		var displayName = emoteName.replace("\\", "");
+		var displayName = emoteName.replace(/\\/g, "");
 		var emoteRegex = "(?<=\\s|^)" + emoteName + "(?=\\s|$)";
-		emoteList[emoteName][0] = "<img style=\"max-height: 32px;\" title=\"" + displayName + "\" alt=\"" + displayName + "\" src=\"" + emoteList[emoteName][0] + "\"\\>";
+		var height = "32";
+		if (emoteList[emoteName].length > 2) {
+			height = emoteList[emoteName][2];
+		}
+		emoteList[emoteName][0] = "<img style=\"max-height: " + height + "px;\" title=\"" + displayName + "\" alt=\"" + displayName + "\" src=\"" + emoteList[emoteName][0] + "\"\\>";
 		emoteList[emoteName][1] = new RegExp(emoteRegex, emoteList[emoteName][1]);
 	}
 	startReplaceLoop();
@@ -172,7 +190,7 @@ function onLoad() {
 }
 
 function startReplaceLoop() {
-	$("body *").filter(function() {
+	$("body *").filter(function() {		
 		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
 	}).each(function() {
 		$(this).contents().filter(function() {
