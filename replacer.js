@@ -61,6 +61,7 @@ function onLoad() {
 
 		// BetterTTV Emotes
 		":tf:": ["https://cdn.betterttv.net/emote/54fa8f1401e468494b85b537/1x", "g"],
+		"\\(ditto\\)": ["https://cdn.betterttv.net/emote/554da1a289d53f2d12781907/1x", "g"],
 		"\\(puke\\)": ["https://cdn.betterttv.net/emote/550288fe135896936880fdd4/1x", "g"],
 		"AngelThump": ["https://cdn.betterttv.net/emote/566ca1a365dbbdab32ec055b/1x", "g"],
 		"BasedGod": ["https://cdn.betterttv.net/emote/566c9eeb65dbbdab32ec052b/1x", "g"],
@@ -87,8 +88,11 @@ function onLoad() {
 		"GabeN": ["https://cdn.betterttv.net/emote/54fa90ba01e468494b85b543/1x", "g"],
 		"gachiBASS": ["https://cdn.betterttv.net/emote/57719a9a6bdecd592c3ad59b/1x", "g"],
 		"gachiGASM": ["https://cdn.betterttv.net/emote/55999813f0db38ef6c7c663e/1x", "g"],
+		"GachiPls": ["https://cdn.betterttv.net/emote/58868aa5afc2ff756c3f495e/1x", "g"],
+		"gachiPRIDE": ["https://cdn.betterttv.net/emote/587fc95dafc2ff756c3f3012/1x", "g"],
 		"haHAA": ["https://cdn.betterttv.net/emote/555981336ba1901877765555/1x", "g"],
 		"HAhaa": ["https://cdn.betterttv.net/emote/55f47f507f08be9f0a63ce37/1x", "g"],
+		"headBang": ["https://cdn.betterttv.net/emote/57320689d69badf9131b82c4/1x", "g"],
 		"HYPERLUL": ["https://cdn.betterttv.net/emote/584b46fb32456b42e62b696b/1x", "g"],
 		"ImTriggered": ["https://cdn.betterttv.net/emote/55b11f64ac9c447a4e565d14/1x", "g"],
 		"KKaper": ["https://cdn.betterttv.net/emote/566d3352fb7103f332d79dbe/1x", "g"],
@@ -96,6 +100,7 @@ function onLoad() {
 		"KKool": ["https://cdn.betterttv.net/emote/56c2cff2d9ec6bf744247bf1/1x", "g"],
 		"LuL": ["https://cdn.betterttv.net/emote/567b00c61ddbe1786688a633/1x", "g"],
 		"MEGALUL": ["https://cdn.betterttv.net/emote/579f9ac281108bf71a550e97/1x", "g"],
+		"MingLUL": ["https://cdn.betterttv.net/emote/57b1edb7337fc8a50520bc8f/1x", "g"],
 		"monkaGun": ["https://cdn.betterttv.net/emote/58f6e05e58f5dd226a16166e/1x", "g"],
 		"monkaMEGA": ["https://cdn.betterttv.net/emote/58903da0b3b0df756ac3e64e/1x", "g"],
 		"monkaOMEGA": ["https://cdn.betterttv.net/emote/5981e21aeaab4f3320e73abe/1x", "g"],
@@ -133,6 +138,7 @@ function onLoad() {
 		"FeelsOkayMan": ["https://cdn.frankerfacez.com/emoticon/145947/1", "g"],
 		"FeelsRageMan": ["https://cdn.frankerfacez.com/emoticon/53418/1", "g"],
 		"FeelsWeirdMan": ["https://cdn.frankerfacez.com/emoticon/131597/1", "g"],
+		"gachiHYPER": ["https://cdn.frankerfacez.com/emoticon/196406/1", "g"],
 		"HandsUp": ["https://cdn.frankerfacez.com/emoticon/168711/1", "g"],
 		"HONEYDETECTED": ["https://cdn.frankerfacez.com/emoticon/211702/1", "g"],
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "g"],
@@ -141,6 +147,7 @@ function onLoad() {
 		"KKonaW": ["https://cdn.frankerfacez.com/emoticon/157420/1", "g"],
 		"LULW": ["https://cdn.frankerfacez.com/emoticon/139407/1", "g"],
 		"PagChomp": ["https://cdn.frankerfacez.com/emoticon/61496/1", "g"],
+		"pajaCMON": ["https://cdn.frankerfacez.com/emoticon/177686/1", "g"],
 		"PepeHands": ["https://cdn.frankerfacez.com/emoticon/188326/1", "g"],
 		"pepeL": ["https://cdn.frankerfacez.com/emoticon/200804/1", "g"],
 		"PepeLaugh": ["https://cdn.frankerfacez.com/emoticon/64785/1", "g"],
@@ -156,6 +163,12 @@ function onLoad() {
 		// Unicode Emotes
 		":dagger:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/dagger-knife_1f5e1.png", "g", "20"],
 		":gun:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/pistol_1f52b.png", "g", "20"],
+		":joy:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/face-with-tears-of-joy_1f602.png", "g", "20"],
+		":ok_hand:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/ok-hand-sign_1f44c.png", "g", "20"],
+		":point_down:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/white-down-pointing-backhand-index_1f447.png", "g", "20"],
+		":point_left:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/white-left-pointing-backhand-index_1f448.png", "g", "20"],
+		":point_right:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/white-right-pointing-backhand-index_1f449.png", "g", "20"],
+		":point_up:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/white-up-pointing-backhand-index_1f446.png", "g", "20"],
 		":rage:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/pouting-face_1f621.png", "g", "20"],
 		":shield:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/shield_1f6e1.png", "g", "20"],
 		":sun_with_face:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/twitter/103/sun-with-face_1f31e.png", "g", "20"],
@@ -175,7 +188,7 @@ function onLoad() {
 	startReplaceLoop();
 	var mutationObserver = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
-			for (var i = 0; i < mutation.addedNodes.length; ++i) {
+			for (var i = 0; i < mutation.addedNodes.length; i++) {
 				var currentNode = mutation.addedNodes[i];
 				$(currentNode).find("*").contents().filter(function() {
 					return (this.nodeType == 3 && this.textContent.match(nodeTestRegEx));
