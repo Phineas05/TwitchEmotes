@@ -33,6 +33,7 @@ function onLoad() {
 		"EleGiggle": ["https://static-cdn.jtvnw.net/emoticons/v1/4339/1.0", "g"],
 		"FailFish": ["https://static-cdn.jtvnw.net/emoticons/v1/360/1.0", "g"],
 		"FrankerZ": ["https://static-cdn.jtvnw.net/emoticons/v1/65/1.0", "g"],
+		"GTChimp": ["https://static-cdn.jtvnw.net/emoticons/v1/607026/1.0", "g"],
 		"HeyGuys": ["https://static-cdn.jtvnw.net/emoticons/v1/30259/1.0", "g"],
 		"HotPokket": ["https://static-cdn.jtvnw.net/emoticons/v1/357/1.0", "g"],
 		"Jebaited": ["https://static-cdn.jtvnw.net/emoticons/v1/114836/1.0", "g"],
@@ -153,6 +154,7 @@ function onLoad() {
 
 		// FrankerFaceZ Emotes
 		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "g"],
+		"4House": ["https://cdn.frankerfacez.com/emoticon/230495/1", "g"],
 		"BBona": ["https://cdn.frankerfacez.com/emoticon/186727/1", "g"],
 		"eShrug": ["https://cdn.frankerfacez.com/emoticon/107715/1", "g"],
 		"EZY": ["https://cdn.frankerfacez.com/emoticon/185890/1", "g"],
