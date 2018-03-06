@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "TwitchEmotes",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"description": "Displays select Twitch, BetterTTV and FrankerFaceZ emotes on all sites.",
 	"icons": {
 		"128": "icon.png"
@@ -10,6 +10,6 @@
 		"matches": ["<all_urls>"],
 		"all_frames": true,
 		"match_about_blank": true,
-		"js": ["jquery-3.2.1.min.js", "replacer.js"]
+		"js": ["jquery-3.3.1.min.js", "replacer.js"]
 	}]
 }
