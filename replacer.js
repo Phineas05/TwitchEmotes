@@ -84,6 +84,7 @@ function onLoad() {
 		"FeelsBirthdayMan": ["https://cdn.betterttv.net/emote/55b6524154eefd53777b2580/1x", "g"],
 		"FeelsGoodMan": ["https://cdn.betterttv.net/emote/566c9fde65dbbdab32ec053e/1x", "g"],
 		"FeelsLifeMan": ["https://cdn.betterttv.net/emote/5882b9b2b386687588ffaa6c/1x", "g"],
+		"FeelsPepoMan": ["https://cdn.betterttv.net/emote/5771aa498bbc1e572cb7ae4d/1x", "g"],
 		"FeelsRageMan": ["https://cdn.betterttv.net/emote/5597e66ed8152e272470f830/1x", "g"],
 		"FeelsRainMan": ["https://cdn.betterttv.net/emote/57850b9df1bf2c1003a88644/1x", "g"],
 		"FeelsSadMan": ["https://cdn.betterttv.net/emote/5613b7ca141069f91f48acca/1x", "g"],
@@ -129,6 +130,7 @@ function onLoad() {
 		"OMEGAZULUL": ["https://cdn.betterttv.net/emote/58ec135757be58152bdfa727/1x", "g"],
 		"PedoBear": ["https://cdn.betterttv.net/emote/54fa928f01e468494b85b54f/1x", "g"],
 		"peepoHappy": ["https://cdn.betterttv.net/emote/5a16ee718c22a247ead62d4a/1x", "g"],
+		"peepoSad": ["https://cdn.betterttv.net/emote/5a16ddca8c22a247ead62ceb/1x", "g"],
 		"pepeClap": ["https://cdn.betterttv.net/emote/59688b35172b8b255ec3f6ac/1x", "g"],
 		"PepePls": ["https://cdn.betterttv.net/emote/55898e122612142e6aaa935b/1x", "g"],
 		"pepoStop": ["https://cdn.betterttv.net/emote/594d34e3e949fe3b435e534d/1x", "g"],
@@ -156,15 +158,20 @@ function onLoad() {
 		"4HEad": ["https://cdn.frankerfacez.com/emoticon/165783/1", "g"],
 		"4House": ["https://cdn.frankerfacez.com/emoticon/230495/1", "g"],
 		"BBona": ["https://cdn.frankerfacez.com/emoticon/186727/1", "g"],
+		"Champ": ["https://cdn.frankerfacez.com/emoticon/216396/1", "g"],
 		"eShrug": ["https://cdn.frankerfacez.com/emoticon/107715/1", "g"],
 		"EZY": ["https://cdn.frankerfacez.com/emoticon/185890/1", "g"],
 		"FeelsDankMan": ["https://cdn.frankerfacez.com/emoticon/167677/1", "g"],
 		"FeelsOkayMan": ["https://cdn.frankerfacez.com/emoticon/145947/1", "g"],
 		"FeelsWeirdMan": ["https://cdn.frankerfacez.com/emoticon/131597/1", "g"],
 		"gachiHYPER": ["https://cdn.frankerfacez.com/emoticon/196406/1", "g"],
+		"ggxHard": ["https://cdn.frankerfacez.com/emoticon/240523/1", "g"],
+		"greekBox": ["https://cdn.frankerfacez.com/emoticon/241832/1", "g"],
+		"gShrug": ["https://cdn.frankerfacez.com/emoticon/240398/1", "g"],
 		"HandsUp": ["https://cdn.frankerfacez.com/emoticon/168711/1", "g"],
 		"HONEYDETECTED": ["https://cdn.frankerfacez.com/emoticon/211702/1", "g"],
 		"HYPERBRUH": ["https://cdn.frankerfacez.com/emoticon/204717/1", "g"],
+		"HYPERDANSGAME": ["https://cdn.frankerfacez.com/emoticon/230948/1", "g"],
 		"Kapp": ["https://cdn.frankerfacez.com/emoticon/218860/1", "g"],
 		"KKomrade": ["https://cdn.frankerfacez.com/emoticon/145916/1", "g"],
 		"KKonaW": ["https://cdn.frankerfacez.com/emoticon/157420/1", "g"],
@@ -174,6 +181,7 @@ function onLoad() {
 		"PepeHands": ["https://cdn.frankerfacez.com/emoticon/188326/1", "g"],
 		"pepeL": ["https://cdn.frankerfacez.com/emoticon/200804/1", "g"],
 		"PepeLaugh": ["https://cdn.frankerfacez.com/emoticon/64785/1", "g"],
+		"Pepepains": ["https://cdn.frankerfacez.com/emoticon/227992/1", "g"],
 		"PepeRIP": ["https://cdn.frankerfacez.com/emoticon/61091/1", "g"],
 		"PepoThink": ["https://cdn.frankerfacez.com/emoticon/174942/1", "g"],
 		"Pog": ["https://cdn.frankerfacez.com/emoticon/210748/1", "g"],
@@ -198,6 +206,12 @@ function onLoad() {
 		":thinking:": ["https://emojipedia-us.s3.amazonaws.com/thumbs/60/apple/114/thinking-face_1f914.png", "g", "20"]
 
 	};
+	if (host == "www.twitch.tv" || host == "clips.twitch.tv") {
+		additionalEmotes = {
+			"Dance": ["https://cdn.betterttv.net/emote/5ac010935bb0055814c30f4f/1x", "g"]
+		};
+		emoteList = {...emoteList, ...additionalEmotes}
+	}
 	for (var emoteName in emoteList) {
 		var displayName = emoteName.replace(/\\/g, "");
 		var emoteRegex = "(?<=\\s|^)" + emoteName + "(?=\\s|$)";
