@@ -1,8 +1,8 @@
 # TwitchEmotes
 
-A Google Chrome extension that replaces certain text with emotes.
+A Google Chrome extension that replaces text with emotes.
 
-Includes support for select [Twitch](https://www.twitch.tv), [BetterTTV](https://nightdev.com/betterttv) and [FrankerFaceZ](https://www.frankerfacez.com) emotes.
+Includes support for [Twitch](https://www.twitch.tv), [BetterTTV](https://nightdev.com/betterttv) and [FrankerFaceZ](https://www.frankerfacez.com) emotes.
 
 ## Installation Instructions
 

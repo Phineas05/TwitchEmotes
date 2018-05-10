@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>TwitchEmotes</title>
+		<link rel="stylesheet" type="text/css" href="settings.css">
+		<script type="application/javascript" src="jquery-3.3.1.min.js"></script>
+		<script type="application/javascript" src="settings.js"></script>
+	</head>
+	<body>
+		<div class="blackOverlay"></div>
+		<div id="dialogBox" class="floatingBox">
+			<b><span id="dialogBoxTitle">Title</span></b><br/><br/>
+			<input class="textBox" type="text" id="dialogBoxTextBox" placeholder="Placeholder"/><br/><br/>
+			<a class="actionLink" id="dialogBoxAddButton">Add</a>
+			<a class="actionLink" style="float: right;" id="dialogBoxCancelButton">Cancel</a>
+		</div>
+		<div id="confirmationBox" class="floatingBox">
+				Are you sure you want to reset all settings to their default values?<br/><br/>
+				<a class="actionLink" id="confirmationYesButton">Yes</a>
+				<a class="actionLink" style="float: right;" id="confirmationNoButton">No</a>
+			</div>
+		<div class="centerPanel">
+			<h1>TwitchEmotes Settings</h1>
+			<h2>General</h2>
+			<hr/>
+			<input type="checkbox" id="enableTwitchEmotesCheckbox"> Enable Twitch Emotes<br/><br/>
+			<input type="checkbox" id="enableBTTVEmotesCheckbox"> Enable BetterTTV Emotes<br/>
+			BetterTTV Channels <a class="actionLink" id="addBTTVChannelButton">Add</a><br/>
+			<div id="BTTVChannels"></div><br/>
+			<input type="checkbox" id="enableFFZEmotesCheckbox"> Enable FrankerFaceZ Emotes<br/>
+			FrankerFaceZ Channels <a class="actionLink" id="addFFZChannelButton">Add</a><br/>
+			<div id="FFZChannels"></div><br/>
+			<input type="checkbox" id="enableEmoteBlacklistCheckbox"> Enable emote blacklist<br/>
+			<input type="checkbox" id="removeBlacklistedEmotesCheckbox"> Remove chat messages that contain blacklisted emotes<br/>
+			Emote Blacklist <a class="actionLink" id="addBlacklistedEmoteButton">Add</a><br/>
+			<div id="emoteBlacklist"></div>
+			<h2>Hostname Blacklist or Whitelist</h2>
+			<hr/>
+			<input type="radio" name="hostnameListType" id="hostnameListTypeBlacklist"> Blacklist<br/>
+			<input type="radio" name="hostnameListType" id="hostnameListTypeWhitelist"> Whitelist<br/><br/>
+			<p class="smallText">Enter one hostname per line and click outside the box to save.</p>
+			<textarea class="bigTextBox" id="hostnameList"/></textarea>
+			<h2>Other Actions</h2>
+			<hr/>
+			<a class="actionLink" id="resetSettingsButton">Reset Settings</a><br/>
+			<a class="actionLink" id="clearCacheButton">Clear Emote List Cache</a><br/><br/><br/><br/>
+			<div class="notification">Text</div>
+			<center>
+				<a class="actionLink" href="https://github.com/Phineas05" target="_blank">github.com/Phineas05</a>
+			</center><br/>
+		</div>
+	</body>
+</html>

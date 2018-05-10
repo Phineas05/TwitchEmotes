@@ -1,0 +1,148 @@
+body {
+	font-family: "Segoe UI";
+	font-size: 20px;
+	color: #CCCCCC;
+	background-color: #222222;
+	margin: 0px;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: bold;
+	margin: 0px;
+}
+
+h2 {
+	font-size: 25px;
+	font-weight: bold;
+	margin: 30px 0px 0px 0px;
+}
+
+.centerPanel {
+	width: 70%;
+	margin: 15px auto;
+	overflow-wrap: break-word;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.actionLink {
+	transition: color 0.25s;
+	text-decoration: none;
+	color: #42A5F5;
+}
+
+.actionLink:visited {
+	text-decoration: none;
+	color: #42A5F5;
+}
+
+.actionLink:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: #1E88E5;
+}
+
+.actionLink:active {
+	text-decoration: none;
+	color: #1565C0;
+}
+
+.actionLink:focus {
+	cursor: pointer;
+	text-decoration: none;
+	color: #1E88E5;
+}
+
+.deleteLink {
+	transition: color 0.25s;
+	text-decoration: none;
+	color: #EF5350;
+}
+
+.deleteLink:visited {
+	text-decoration: none;
+	color: #EF5350;
+}
+
+.deleteLink:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: #E53935;
+}
+
+.deleteLink:active {
+	text-decoration: none;
+	color: #C62828;
+}
+
+.deleteLink:focus {
+	cursor: pointer;
+	text-decoration: none;
+	color: #E53935;
+}
+
+.blackOverlay {
+	left: 0%;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: #000000;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s;
+}
+
+.floatingBox {
+	width: 800px;
+	background: #222222;
+	position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	padding: 30px;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%);
+	transition: opacity 0.25s;
+	border: 1px solid #CCCCCC;
+}
+
+.textBox {
+	font-family: "Segoe UI";
+	font-size: 20px;
+	color: #CCCCCC;
+	width: 100%;
+	padding: 5px;
+	border: none;
+	background: transparent;
+	outline: none;
+	border-bottom: 1px solid #CCCCCC;
+	transition: width 0.25s, border-color 0.25s;
+}
+
+.bigTextBox {
+	width: 100%;
+	height: 100px;
+	color: #CCCCCC;
+	background-color: #222222;
+}
+
+.smallText {
+	font-size: 15px;
+	color: #888888;
+	margin: 0px 0px 5px 0px;
+}
+
+.notification {
+	position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	padding: 15px;
+	bottom: 15px;
+	right: 15px;
+	background-color: #333333;
+	border: 1px solid #CCCCCC;
+	transition: opacity 0.25s;
+	cursor: pointer;
+}
