@@ -6,7 +6,7 @@ var blacklistedTags;
 var emoteList;
 var lastTitle;
 var addedLinks;
-var waiting;
+var waiting = 0;
 
 function onLoad() {
 	chrome.storage.local.get({
@@ -16,6 +16,8 @@ function onLoad() {
 	});
 	chrome.storage.sync.get({
 		enableTwitchEmotes: true,
+		subscriberEmotesChannels: [],
+		enableOnTwitch: false,
 		enableBTTVEmotes: true,
 		BTTVChannels: [],
 		enableFFZEmotes: true,
@@ -50,18 +52,23 @@ function initialize() {
 	emoteList = {};
 	urlList = [];
 	if (extensionSettings.enableTwitchEmotes) {
-		urlList.push(["https://twitchemotes.com/api_cache/v3/global.json", 1, "Twitch Global Emote"]);
+		if (((host == "www.twitch.tv" || host == "clips.twitch.tv") && extensionSettings.enableOnTwitch) || (host != "www.twitch.tv" && host != "clips.twitch.tv")) {
+			urlList.push(["https://twitchemotes.com/api_cache/v3/global.json", 1, "Twitch Global Emote"]);
+			$.each(extensionSettings.subscriberEmotesChannels, function(index, value) {
+				urlList.push(["https://api.twitch.tv/api/channels/" + value + "/product?client_id=p7avnpl1f9bpc9mxa6za572e94x2qc", 2, "Subscriber Emote - " + value]);
+			});
+		}
 	}
 	if (extensionSettings.enableBTTVEmotes) {
 		urlList.push(["https://api.betterttv.net/2/emotes", 2, "BetterTTV Global Emote"]);
 		$.each(extensionSettings.BTTVChannels, function(index, value) {
-			urlList.push(["https://api.betterttv.net/2/channels/" + value, 2, "BetterTTV Emote - " + value]);
+			urlList.push(["https://api.betterttv.net/2/channels/" + value, 3, "BetterTTV Emote - " + value]);
 		});
 	}
 	if (extensionSettings.enableFFZEmotes) {
 		urlList.push(["https://api.frankerfacez.com/v1/set/global", 3, "FrankerFaceZ Global Emote"]);
 		$.each(extensionSettings.FFZChannels, function(index, value) {
-			urlList.push(["https://api.frankerfacez.com/v1/room/" + value, 3, "FrankerFaceZ Emote - " + value]);
+			urlList.push(["https://api.frankerfacez.com/v1/room/" + value, 4, "FrankerFaceZ Emote - " + value]);
 		});
 	}
 	var twitchChannel = getCurrentTwitchChannel();
@@ -80,7 +87,7 @@ function initialize() {
 		});
 		titleChangeObserver.observe(document.querySelector("title"), {attributes: false, childList: true, characterData: true, subtree: true});
 	}
-	waiting = urlList.length;
+	waiting += urlList.length;
 	$.each(urlList, function(index, value) {
 		addEmotes(value[0], value[1], value[2]);
 	});
@@ -137,7 +144,7 @@ function addEmotes(url, parseMode, extra, direct = false) {
 	if (addedLinks.indexOf(url) == -1) {
 		addedLinks.push(url);
 	} else {
-		return
+		return;
 	}
 	var currentTimestamp = Math.floor(Date.now() / 1000);
 	if (url in emoteListCache) {
@@ -158,10 +165,14 @@ function addEmotes(url, parseMode, extra, direct = false) {
 						emoteList[emoteName] = ["https://static-cdn.jtvnw.net/emoticons/v1/" + data["id"] + "/1.0", extra];
 					});
 				case 2:
+					$.each(response["emoticons"], function(index, data) {
+						emoteList[data["regex"]] = [data["url"], extra];
+					});
+				case 3:
 					$.each(response["emotes"], function(index, data) {
 						emoteList[data["code"]] = ["https://cdn.betterttv.net/emote/" + data["id"] + "/1x", extra];
 					});
-				case 3:
+				case 4:
 					$.each(response["sets"], function(setID, setData) {
 						$.each(setData["emoticons"], function(index, data) {
 							emoteList[data["name"]] = ["https://cdn.frankerfacez.com/emoticon/" + data["id"] + "/1", extra];
@@ -177,7 +188,7 @@ function addEmotes(url, parseMode, extra, direct = false) {
 			processEmotes(emoteList, direct);
 		},
 		error: function() {
-			emoteListCache[url] = {expiry: currentTimestamp + 3600, emoteList: {}};
+			emoteListCache[url] = {expiry: currentTimestamp + 600, emoteList: {}};
 			chrome.storage.local.set({
 				emoteListCache: emoteListCache
 			});
@@ -247,26 +258,30 @@ function getCurrentTwitchChannel() {
 
 function addChannelEmotes(channel, returns = false) {
 	urlList = [];
+	if (extensionSettings.enableTwitchEmotes) {
+		if (((host == "www.twitch.tv" || host == "clips.twitch.tv") && extensionSettings.enableOnTwitch) || (host != "www.twitch.tv" && host != "clips.twitch.tv")) {
+			if (extensionSettings.subscriberEmotesChannels.indexOf(channel) == -1) {
+				urlList.push(["https://api.twitch.tv/api/channels/" + channel + "/product?client_id=p7avnpl1f9bpc9mxa6za572e94x2qc", 2, "Subscriber Emote - " + channel]);
+			}
+		}
+	}
 	if (extensionSettings.enableBTTVEmotes) {
 		if (extensionSettings.BTTVChannels.indexOf(channel) == -1) {
-			if (returns) {
-				urlList.push(["https://api.betterttv.net/2/channels/" + channel, 2, "BetterTTV Emote - " + channel]);
-			} else {
-				addEmotes("https://api.betterttv.net/2/channels/" + channel, 2, "BetterTTV Emote - " + channel, true);
-			}
+			urlList.push(["https://api.betterttv.net/2/channels/" + channel, 3, "BetterTTV Emote - " + channel]);
 		}
 	}
 	if (extensionSettings.enableFFZEmotes) {
 		if (extensionSettings.FFZChannels.indexOf(channel) == -1) {
-			if (returns) {
-				urlList.push(["https://api.frankerfacez.com/v1/room/" + channel, 3, "FrankerFaceZ Emote - " + channel]);
-			} else {
-				addEmotes("https://api.frankerfacez.com/v1/room/" + channel, 3, "FrankerFaceZ Emote - " + channel, true);
-			}
+			urlList.push(["https://api.frankerfacez.com/v1/room/" + channel, 4, "FrankerFaceZ Emote - " + channel]);
 		}
 	}
 	if (returns) {
 		return urlList;
+	} else {
+		waiting += urlList.length;
+		$.each(urlList, function(index, value) {
+			addEmotes(value[0], value[1], value[2]);
+		});
 	}
 }
 

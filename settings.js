@@ -5,6 +5,10 @@ function onLoad() {
 	loadSettings();
 	$("#resetSettingsButton").click(openConfirmationBox);
 	$("#clearCacheButton").click(clearCache);
+	$("#addSubscriberEmotesChannelButton").click(function() {
+		listID = "subscriberEmotesChannels";
+		openDialogBox("Add Subscriber Emotes Channel", "Channel name");
+	});
 	$("#addBTTVChannelButton").click(function() {
 		listID = "BTTVChannels";
 		openDialogBox("Add BTTV Channel", "Channel name");
@@ -32,6 +36,9 @@ function onLoad() {
 	$(".notification").click(dismissNotification);
 	$("#enableTwitchEmotesCheckbox").change(function() {
 		chrome.storage.sync.set({enableTwitchEmotes: this.checked});
+	});
+	$("#enableOnTwitchCheckbox").change(function() {
+		chrome.storage.sync.set({enableOnTwitch: this.checked});
     });
 	$("#enableBTTVEmotesCheckbox").change(function() {
 		chrome.storage.sync.set({enableBTTVEmotes: this.checked});
@@ -97,6 +104,8 @@ function updateList(listID, list) {
 function loadSettings() {
 	chrome.storage.sync.get({
 		enableTwitchEmotes: true,
+		subscriberEmotesChannels: [],
+		enableOnTwitch: false,
 		enableBTTVEmotes: true,
 		BTTVChannels: [],
 		enableFFZEmotes: true,
@@ -108,6 +117,8 @@ function loadSettings() {
 		hostnameList: []
 	}, function(settings) {
 		$("#enableTwitchEmotesCheckbox").prop("checked", settings.enableTwitchEmotes);
+		updateList("subscriberEmotesChannels", settings.subscriberEmotesChannels);
+		$("#enableOnTwitchCheckbox").prop("checked", settings.enableOnTwitch);
 		$("#enableBTTVEmotesCheckbox").prop("checked", settings.enableBTTVEmotes);
 		updateList("BTTVChannels", settings.BTTVChannels);
 		$("#enableFFZEmotesCheckbox").prop("checked", settings.enableFFZEmotes);
