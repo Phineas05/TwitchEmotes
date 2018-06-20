@@ -140,7 +140,7 @@ function escapeRegEx(string) {
 	return string.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
-function addEmotes(url, parseMode, extra, direct = false) {
+function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 	if (addedLinks.indexOf(url) == -1) {
 		addedLinks.push(url);
 	} else {
@@ -188,12 +188,12 @@ function addEmotes(url, parseMode, extra, direct = false) {
 			processEmotes(emoteList, direct);
 		},
 		error: function() {
-			emoteListCache[url] = {expiry: currentTimestamp + 600, emoteList: {}};
-			chrome.storage.local.set({
-				emoteListCache: emoteListCache
-			});
-			if (--waiting == 0) {
-				startReplaceLoop();
+			if (--tries > 0) {
+				addEmotes(url, parseMode, extra, direct, tries)
+			} else {
+				if (--waiting == 0) {
+					startReplaceLoop();
+				}
 			}
 		}
 	});

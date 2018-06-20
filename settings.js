@@ -39,16 +39,16 @@ function onLoad() {
 	});
 	$("#enableOnTwitchCheckbox").change(function() {
 		chrome.storage.sync.set({enableOnTwitch: this.checked});
-    });
+	});
 	$("#enableBTTVEmotesCheckbox").change(function() {
 		chrome.storage.sync.set({enableBTTVEmotes: this.checked});
-    });
+	});
 	$("#enableFFZEmotesCheckbox").change(function() {
 		chrome.storage.sync.set({enableFFZEmotes: this.checked});
-    });
+	});
 	$("#enableEmoteBlacklistCheckbox").change(function() {
 		chrome.storage.sync.set({enableEmoteBlacklist: this.checked});
-    });
+	});
 	$("#removeBlacklistedEmotesCheckbox").change(function() {
 		chrome.storage.sync.set({removeBlacklistedEmotes: this.checked});
 	});
