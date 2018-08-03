@@ -6,38 +6,47 @@ var blacklistedTags;
 var emoteList;
 var lastTitle;
 var addedLinks;
+var mutationObserver;
 var waiting = 0;
 
-function onLoad() {
-	chrome.storage.local.get({
-		emoteListCache: {}
-	}, function(settings) {
-		emoteListCache = settings.emoteListCache;
-	});
-	chrome.storage.sync.get({
-		enableTwitchEmotes: true,
-		subscriberEmotesChannels: [],
-		enableOnTwitch: false,
-		enableBTTVEmotes: true,
-		BTTVChannels: [],
-		enableFFZEmotes: true,
-		FFZChannels: [],
-		enableEmoteBlacklist: false,
-		removeBlacklistedEmotes: false,
-		emoteBlacklist: [],
-		hostnameListType: "blacklist",
-		hostnameList: []
-	}, function(settings) {
-		extensionSettings = settings;
-		initialize();
-	});
+function initialize(changes = null, areaName = "sync") {
+	if (areaName == "sync") {
+		if (mutationObserver) {
+			mutationObserver.disconnect();
+		}
+		chrome.storage.local.get({
+			emoteListCache: {}
+		}, function(settings) {
+			emoteListCache = settings.emoteListCache;
+		});
+		chrome.storage.sync.get({
+			enableTwitchEmotes: true,
+			subscriberEmotesChannels: [],
+			enableOnTwitch: false,
+			enableBTTVEmotes: true,
+			BTTVChannels: [],
+			enableFFZEmotes: true,
+			FFZChannels: [],
+			enableEmoteBlacklist: false,
+			removeBlacklistedEmotes: false,
+			emoteBlacklist: [],
+			hostnameListType: "blacklist",
+			hostnameList: []
+		}, function(settings) {
+			extensionSettings = settings;
+			start();
+		});
+	}
 }
-$(document).ready(onLoad);
+$(document).ready(initialize);
+chrome.storage.onChanged.addListener(initialize);
 
-function initialize() {
+function start() {
 	host = window.location.hostname;
 	lastTitle = document.title;
 	addedLinks = [];
+	emoteList = {};
+	urlList = [];
 	if (extensionSettings.hostnameList.indexOf(host) == -1 && extensionSettings.hostnameList.indexOf(host.replace("www.", "")) == -1) {
 		if (extensionSettings.hostnameListType == "whitelist") {
 			return;
@@ -49,8 +58,6 @@ function initialize() {
 	}
 	nodeTestRegEx = /\w+?/gi;
 	blacklistedTags = ["TITLE", "STYLE", "SCRIPT", "NOSCRIPT", "LINK", "TEMPLATE", "INPUT", "IFRAME"];
-	emoteList = {};
-	urlList = [];
 	if (extensionSettings.enableTwitchEmotes) {
 		if (((host == "www.twitch.tv" || host == "clips.twitch.tv") && extensionSettings.enableOnTwitch) || (host != "www.twitch.tv" && host != "clips.twitch.tv")) {
 			urlList.push(["https://twitchemotes.com/api_cache/v3/global.json", 1, "Twitch Global Emote"]);
@@ -91,7 +98,7 @@ function initialize() {
 	$.each(urlList, function(index, value) {
 		addEmotes(value[0], value[1], value[2]);
 	});
-	var mutationObserver = new MutationObserver(function(mutations) {
+	mutationObserver = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
 			for (var i = 0; i < mutation.addedNodes.length; i++) {
 				var currentNode = $(mutation.addedNodes[i]);

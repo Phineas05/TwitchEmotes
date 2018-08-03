@@ -17,10 +17,6 @@ function onLoad() {
 		listID = "FFZChannels";
 		openDialogBox("Add FFZ Channel", "Channel name");
 	});
-	$("#addBlacklistedEmoteButton").click(function() {
-		listID = "emoteBlacklist";
-		openDialogBox("Add Blacklisted Emote", "Emote name");
-	});
 	$("#dialogBoxTextBox").keyup(function(e) {
 		if (e.keyCode == 13) {
 			dialogBoxAdd();
@@ -52,6 +48,9 @@ function onLoad() {
 	$("#removeBlacklistedEmotesCheckbox").change(function() {
 		chrome.storage.sync.set({removeBlacklistedEmotes: this.checked});
 	});
+	$("#emoteBlacklist").focusout(function() {
+		chrome.storage.sync.set({emoteBlacklist: this.value ? this.value.split(/[;,\n]/).filter(function(x) {return x}) : []});
+	});
 	$("#hostnameListTypeBlacklist").change(function() {
 		chrome.storage.sync.set({hostnameListType: this.checked ? "blacklist" : "whitelist"});
 	});
@@ -59,7 +58,7 @@ function onLoad() {
 		chrome.storage.sync.set({hostnameListType: this.checked ? "whitelist" : "blacklist"});
 	});
 	$("#hostnameList").focusout(function() {
-		chrome.storage.sync.set({hostnameList: this.value ? this.value.split("\n") : []});
+		chrome.storage.sync.set({hostnameList: this.value ? this.value.split("\n").filter(function(x) {return x}) : []});
 	});
 	$(".blackOverlay").click(closeFloatingBox);
 	$(".centerPanel").css({opacity: 1});
@@ -125,7 +124,7 @@ function loadSettings() {
 		updateList("FFZChannels", settings.FFZChannels);
 		$("#enableEmoteBlacklistCheckbox").prop("checked", settings.enableEmoteBlacklist);
 		$("#removeBlacklistedEmotesCheckbox").prop("checked", settings.removeBlacklistedEmotes);
-		updateList("emoteBlacklist", settings.emoteBlacklist);
+		$("#emoteBlacklist").val(settings.emoteBlacklist.join(";"));
 		if (settings.hostnameListType == "whitelist") {
 			$("#hostnameListTypeWhitelist").prop("checked", true);
 		} else {

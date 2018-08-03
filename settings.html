@@ -20,7 +20,7 @@
 			</div>
 		<div class="centerPanel">
 			<h1>TwitchEmotes Settings</h1>
-			<h2>General</h2>
+			<h2>Emotes and Channels</h2>
 			<hr/>
 			<input type="checkbox" id="enableTwitchEmotesCheckbox"> Enable Twitch Emotes<br/>
 			Subscriber Emotes Channels <a class="actionLink" id="addSubscriberEmotesChannelButton">Add</a><br/>
@@ -31,16 +31,18 @@
 			<div id="BTTVChannels"></div><br/>
 			<input type="checkbox" id="enableFFZEmotesCheckbox"> Enable FrankerFaceZ Emotes<br/>
 			FrankerFaceZ Channels <a class="actionLink" id="addFFZChannelButton">Add</a><br/>
-			<div id="FFZChannels"></div><br/>
+			<div id="FFZChannels"></div>
+			<h2>Emote Blacklist</h2>
+			<hr/>
 			<input type="checkbox" id="enableEmoteBlacklistCheckbox"> Enable emote blacklist<br/>
-			<input type="checkbox" id="removeBlacklistedEmotesCheckbox"> Remove chat messages that contain blacklisted emotes<br/>
-			Emote Blacklist <a class="actionLink" id="addBlacklistedEmoteButton">Add</a><br/>
-			<div id="emoteBlacklist"></div>
+			<input type="checkbox" id="removeBlacklistedEmotesCheckbox"> Remove chat messages that contain blacklisted emotes<br/><br/>
+			<p class="smallText">Seperate multiple emotes using semicolons, commas or newlines, click outside the box to save.</p>
+			<textarea class="bigTextBox" id="emoteBlacklist"/></textarea>
 			<h2>Hostname Blacklist or Whitelist</h2>
 			<hr/>
 			<input type="radio" name="hostnameListType" id="hostnameListTypeBlacklist"> Blacklist<br/>
 			<input type="radio" name="hostnameListType" id="hostnameListTypeWhitelist"> Whitelist<br/><br/>
-			<p class="smallText">Enter one hostname per line and click outside the box to save.</p>
+			<p class="smallText">Enter one hostname per line, and click outside the box to save.</p>
 			<textarea class="bigTextBox" id="hostnameList"/></textarea>
 			<h2>Other Actions</h2>
 			<hr/>
