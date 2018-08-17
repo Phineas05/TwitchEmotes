@@ -94,6 +94,19 @@ function start() {
 		});
 		titleChangeObserver.observe(document.querySelector("title"), {attributes: false, childList: true, characterData: true, subtree: true});
 	}
+	var currentTimestamp = Math.floor(Date.now() / 1000);
+	var deletedFromCache = 0;
+	for (var url in emoteListCache) {
+		if (emoteListCache[url]["expiry"] - currentTimestamp <= 0) {
+			delete emoteListCache[url];
+			deletedFromCache++;
+		}
+	}
+	if (deletedFromCache > 0) {
+		chrome.storage.local.set({
+			emoteListCache: emoteListCache
+		});
+	}
 	waiting += urlList.length;
 	$.each(urlList, function(index, value) {
 		addEmotes(value[0], value[1], value[2]);
@@ -260,7 +273,9 @@ function getCurrentTwitchChannel() {
 			twitchChannel = new RegExp("<meta property=\"og:title\" content=\"\(.*?) Playing", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
 		} catch { }
 	}
-	return twitchChannel;
+	if (twitchChannel.indexOf(" ") < 0) {
+		return twitchChannel;
+	}
 }
 
 function addChannelEmotes(channel, returns = false) {
