@@ -23,7 +23,7 @@ function onLoad() {
 		} else if (e.keyCode == 27) {
 			closeFloatingBox();
 		}
-   });
+	});
 	$("#dialogBoxAddButton").click(dialogBoxAdd);
 	$("#dialogBoxCancelButton").click(closeFloatingBox);
 	$(document).on("click", "#removeListItemButton", removeListItem);
