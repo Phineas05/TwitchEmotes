@@ -8,6 +8,7 @@ var lastTitle;
 var addedLinks;
 var mutationObserver;
 var twitchGlobalEmotes;
+var twitchChannel;
 var waiting = 0;
 
 function initialize(changes = null, areaName = "sync") {
@@ -80,7 +81,7 @@ function start() {
 			urlList.push(["https://api.frankerfacez.com/v1/room/" + value, 4, "FrankerFaceZ Emote - " + value]);
 		});
 	}
-	var twitchChannel = getCurrentTwitchChannel();
+	twitchChannel = getCurrentTwitchChannel();
 	if (twitchChannel) {
 		urlList = urlList.concat(addChannelEmotes(twitchChannel, true));
 	}
@@ -88,7 +89,7 @@ function start() {
 		var titleChangeObserver = new MutationObserver(function(mutations) {
 			if (lastTitle != mutations[0].target.innerHTML) {
 				lastTitle = mutations[0].target.innerHTML;
-				var twitchChannel = getCurrentTwitchChannel();
+				twitchChannel = getCurrentTwitchChannel();
 				if (twitchChannel) {
 					addChannelEmotes(twitchChannel);
 				}
@@ -117,10 +118,12 @@ function start() {
 		mutations.forEach(function(mutation) {
 			for (var i = 0; i < mutation.addedNodes.length; i++) {
 				var currentNode = $(mutation.addedNodes[i]);
-				if (host == "clips.twitch.tv" && !twitchChannel) {
+				if (host == "clips.twitch.tv") {
 					try {
-						twitchChannel = new RegExp(escapeRegEx("<a target=\"_blank\" href=\"https://www.twitch.tv/") + "(.*?)" + escapeRegEx("/clips?tt_content=player_profile_img"), "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
-						addChannelEmotes(twitchChannel);
+						twitchChannel = getCurrentTwitchChannel();
+						if (twitchChannel) {
+							addChannelEmotes(twitchChannel);
+						}
 					} catch { }
 				}
 				if (extensionSettings.enableEmoteBlacklist && extensionSettings.removeBlacklistedEmotes) {
@@ -166,6 +169,7 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 	if (addedLinks.indexOf(url) == -1) {
 		addedLinks.push(url);
 	} else {
+		waiting--;
 		return;
 	}
 	var currentTimestamp = Math.floor(Date.now() / 1000);
@@ -247,35 +251,30 @@ function getCurrentTwitchChannel() {
 	var twitchChannel = "";
 	if (host == "www.twitch.tv") {
 		var urlSplit = window.location.href.split("/")
-		if (urlSplit[3] == "videos") {
-			if (document.documentElement.innerHTML.indexOf("<title>Twitch</title>") > -1) {
-				try {
-					twitchChannel = new RegExp("<meta property=\"og:description\" content=\"(.*?) - ", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
-				} catch { }
+		if (urlSplit.length > 4 && (urlSplit[4].startsWith("videos") || urlSplit[4].startsWith("clip") || urlSplit[4].startsWith("events") || urlSplit[4].startsWith("followers") || urlSplit[4].startsWith("following"))) {
+			twitchChannel = urlSplit[3];
+		} else if (urlSplit.length > 3) {
+			if (urlSplit[3] == "popout") {
+				twitchChannel = urlSplit[4];
+			} else if (urlSplit[3] == "videos") {
+				if (document.documentElement.innerHTML.indexOf("<title>Twitch</title>") == -1) {
+					try {
+						twitchChannel = new RegExp("<title>(.*?) - ", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
+					} catch { }
+				}
 			} else {
-				try {
-					twitchChannel = new RegExp("<title>(.*?) - ", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
-				} catch { }
-			}
-		} else if (urlSplit[3] == "popout") {
-			twitchChannel = urlSplit[4];
-		} else {
-			if (document.documentElement.innerHTML.indexOf("<title>Twitch</title>") > -1) {
-				try {
-					twitchChannel = new RegExp("<meta property=\"og:title\" content=\"(.*?) - ", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
-				} catch { }
-			} else {
-				try {
-					twitchChannel = new RegExp("<title>(.*?) - ", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
-				} catch { }
+				if (document.documentElement.innerHTML.indexOf("<title>Twitch</title>") == -1) {
+					twitchChannel = urlSplit[3];
+				}
 			}
 		}
 	} else if (host == "clips.twitch.tv") {
 		try {
-			twitchChannel = new RegExp("<meta property=\"og:title\" content=\"\(.*?) Playing", "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
+			twitchChannel = new RegExp(escapeRegEx("<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.twitch.tv/") + "(.*?)" + escapeRegEx("/clips?tt_content=player_profile_img\">"), "g").exec(document.documentElement.innerHTML)[1].toLowerCase();
 		} catch { }
 	}
-	if (twitchChannel.indexOf(" ") < 0) {
+	twitchChannel = twitchChannel.trim();
+	if (twitchChannel && twitchChannel.indexOf(" ") < 0) {
 		return twitchChannel;
 	}
 }
