@@ -274,7 +274,7 @@ function getCurrentTwitchChannel() {
 		} catch { }
 	}
 	twitchChannel = twitchChannel.trim();
-	if (twitchChannel && twitchChannel.indexOf(" ") < 0) {
+	if (twitchChannel && twitchChannel.indexOf(" ") == -1) {
 		return twitchChannel;
 	}
 }
@@ -310,7 +310,7 @@ function addChannelEmotes(channel, returns = false) {
 
 function startReplaceLoop() {
 	$("body *").filter(function() {
-		return (blacklistedTags.indexOf($(this).prop("tagName")) < 0);
+		return (blacklistedTags.indexOf($(this).prop("tagName")) == -1);
 	}).each(function() {
 		$(this).contents().filter(function() {
 			return (this.nodeType == 3 && this.textContent.match(nodeTestRegEx));
@@ -329,14 +329,14 @@ function replacePhrasesWithEmotes(element) {
 		$(element).replaceWith(elementContent);
 		var scrollElements = [];
 		if (host == "www.twitch.tv") {
-			if (!$(".chat-list__more-messages").is(":visible")) {
+			if (!$(".chat-list__list-footer").is(":visible")) {
 				scrollElements.push($(".chat-list").find(".simplebar-scroll-content"));
 			}
 			if (!$(".video-chat__sync-button").is(":visible")) {
 				scrollElements.push($(".video-chat__message-list-wrapper"));
 			}
 		} else if (host == "clips.twitch.tv") {
-			if (!$(".tw-button--small").is(":visible")) {
+			if (!$(".tw-core-button--small").is(":visible")) {
 				scrollElements.push($(".clips-chat").find(".simplebar-scroll-content"));
 			}
 		}
