@@ -180,7 +180,6 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 		addSubscriberEmotesForChannel(url, extra, direct, tries);
 		return;
 	}
-	console.log(url);
 	if (addedLinks.indexOf(url) == -1) {
 		addedLinks.push(url);
 	} else {
@@ -194,10 +193,18 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 			return;
 		}
 	}
+	var headers = {};
+	var contentType = null;
+	if (parseMode == 1 || parseMode == 2) {
+		headers = {"X-Requested-With": "null"};
+		url = "https://cors-anywhere.herokuapp.com/" + url;
+	}
 	$.ajax({
 		url: url,
 		type: "GET",
 		timeout: 15000,
+		headers: headers,
+		contentType: contentType,
 		success: function(response) {
 			var emoteList = {};
 			switch (parseMode) {
