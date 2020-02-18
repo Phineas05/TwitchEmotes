@@ -186,6 +186,11 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 		waiting--;
 		return;
 	}
+	var headers = {};
+	if (parseMode == 1 || parseMode == 2 || parseMode == 3) {
+		headers = {"X-Requested-With": "null"};
+		url = "https://cors-anywhere.herokuapp.com/" + url;
+	}
 	var currentTimestamp = Math.floor(Date.now() / 1000);
 	if (url in emoteListCache) {
 		if (emoteListCache[url]["expiry"] - currentTimestamp > 0) {
@@ -193,18 +198,11 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 			return;
 		}
 	}
-	var headers = {};
-	var contentType = null;
-	if (parseMode == 1 || parseMode == 2) {
-		headers = {"X-Requested-With": "null"};
-		url = "https://cors-anywhere.herokuapp.com/" + url;
-	}
 	$.ajax({
 		url: url,
 		type: "GET",
 		timeout: 15000,
 		headers: headers,
-		contentType: contentType,
 		success: function(response) {
 			var emoteList = {};
 			switch (parseMode) {
