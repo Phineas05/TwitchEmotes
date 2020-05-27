@@ -225,12 +225,12 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3, ignoreAdded
 		newURL = "https://cors-anywhere.herokuapp.com/" + url;
 	}
 	var currentTimestamp = Math.floor(Date.now() / 1000);
-	/* if (url in emoteListCache) {
+	if (url in emoteListCache) {
 		if (emoteListCache[url]["expiry"] - currentTimestamp > 0) {
 			processEmotes(emoteListCache[url]["emoteList"], direct);
 			return;
 		}
-	} */
+	}
 	$.ajax({
 		url: newURL,
 		type: "GET",
