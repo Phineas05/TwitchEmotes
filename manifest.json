@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "TwitchEmotes",
-	"version": "2.9",
+	"version": "2.10",
 	"description": "Displays Twitch, BetterTTV and FrankerFaceZ emotes on all sites.",
 	"icons": {
 		"128": "icon.png"

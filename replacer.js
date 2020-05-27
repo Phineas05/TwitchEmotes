@@ -9,6 +9,7 @@ var addedLinks;
 var mutationObserver;
 var twitchChannel;
 var waiting = 0;
+var channelIDs;
 
 function initialize(changes = null, areaName = "sync") {
 	if (areaName == "sync") {
@@ -48,6 +49,7 @@ function start() {
 	addedLinks = [];
 	emoteList = {};
 	urlList = [];
+	channelIDs = {};
 	if (extensionSettings.hostnameList.indexOf(host) == -1 && extensionSettings.hostnameList.indexOf(host.replace("www.", "")) == -1) {
 		if (extensionSettings.hostnameListType == "whitelist") {
 			return;
@@ -68,9 +70,9 @@ function start() {
 		}
 	}
 	if (extensionSettings.enableBTTVEmotes) {
-		urlList.push(["https://api.betterttv.net/2/emotes", 3, "BetterTTV Global Emote"]);
+		urlList.push(["https://api.betterttv.net/3/cached/emotes/global", 3, "BetterTTV Global Emote"]);
 		$.each(extensionSettings.BTTVChannels, function(index, value) {
-			urlList.push(["https://api.betterttv.net/2/channels/" + value, 3, "BetterTTV Emote - " + value]);
+			urlList.push([value, 6, "BetterTTV Emote - " + value]);
 		});
 	}
 	if (extensionSettings.enableFFZEmotes) {
@@ -164,42 +166,73 @@ function escapeRegEx(string) {
 }
 
 function addSubscriberEmotesForChannel(channelName, extra, direct, tries) {
-	$.ajax({
-		url: "https://api.twitch.tv/helix/users?login=" + channelName,
-		type: "GET",
-		timeout: 15000,
-		headers: {"Client-ID": "p7avnpl1f9bpc9mxa6za572e94x2qc"},
-		success: function(response) {
-			addEmotes("https://api.twitchemotes.com/api/v4/channels/" + response["data"][0]["id"], 2, extra, direct, tries);
-		}
-	});
+	if (!(channelName in channelIDs)) {
+		channelIDs[channelName] = 0;
+		$.ajax({
+			url: "https://cors-anywhere.herokuapp.com/https://twitchemotes.com/search/channel?query=" + channelName,
+			type: "GET",
+			timeout: 15000,
+			headers: {"X-Requested-With": "null"},
+			success: function(response, textStatus, request) {
+				channelIDs[channelName] = request.getResponseHeader("x-final-url").split("/")[4];
+				addEmotes("https://api.twitchemotes.com/api/v4/channels/" + channelIDs[channelName], 1, extra, direct, tries);
+			}
+		});
+	} else {
+	addEmotes("https://api.twitchemotes.com/api/v4/channels/" + channelIDs[channelName], 1, extra, direct, tries);
+	}
 }
 
-function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
+function addBTTVEmotesForChannel(channelName, extra, direct, tries) {
+	if (!(channelName in channelIDs)) {
+		channelIDs[channelName] = 0;
+		$.ajax({
+			url: "https://cors-anywhere.herokuapp.com/https://twitchemotes.com/search/channel?query=" + channelName,
+			type: "GET",
+			timeout: 15000,
+			headers: {"X-Requested-With": "null"},
+			success: function(response, textStatus, request) {
+				channelIDs[channelName] = request.getResponseHeader("x-final-url").split("/")[4];
+				addEmotes("https://api.betterttv.net/3/cached/users/twitch/" + channelIDs[channelName], 2, extra, direct, tries);
+			}
+		});
+	} else {
+		addEmotes("https://api.betterttv.net/3/cached/users/twitch/" + channelIDs[channelName], 2, extra, direct, tries);
+	}
+}
+
+function addEmotes(url, parseMode, extra, direct = false, tries = 3, ignoreAdded = true) {
+	if (parseMode == 6) {
+		addBTTVEmotesForChannel(url, extra, direct, tries);
+		return;
+	}
 	if (parseMode == 5) {
 		addSubscriberEmotesForChannel(url, extra, direct, tries);
 		return;
 	}
-	if (addedLinks.indexOf(url) == -1) {
-		addedLinks.push(url);
-	} else {
-		waiting--;
-		return;
+	if (ignoreAdded) {
+		if (addedLinks.indexOf(url) == -1) {
+			addedLinks.push(url);
+		} else {
+			waiting--;
+			return;
+		}
 	}
 	var headers = {};
+	var newURL = url;
 	if (parseMode == 1 || parseMode == 2 || parseMode == 3) {
 		headers = {"X-Requested-With": "null"};
-		url = "https://cors-anywhere.herokuapp.com/" + url;
+		newURL = "https://cors-anywhere.herokuapp.com/" + url;
 	}
 	var currentTimestamp = Math.floor(Date.now() / 1000);
-	if (url in emoteListCache) {
+	/* if (url in emoteListCache) {
 		if (emoteListCache[url]["expiry"] - currentTimestamp > 0) {
 			processEmotes(emoteListCache[url]["emoteList"], direct);
 			return;
 		}
-	}
+	} */
 	$.ajax({
-		url: url,
+		url: newURL,
 		type: "GET",
 		timeout: 15000,
 		headers: headers,
@@ -212,12 +245,12 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 					});
 					break;
 				case 2:
-					$.each(response["emotes"], function(index, data) {
-						emoteList[data["code"]] = ["https://static-cdn.jtvnw.net/emoticons/v1/" + data["id"] + "/1.0", extra];
+					$.each(response["sharedEmotes"], function(index, data) {
+						emoteList[data["code"]] = ["https://cdn.betterttv.net/emote/" + data["id"] + "/1x", extra];
 					});
 					break;
 				case 3:
-					$.each(response["emotes"], function(index, data) {
+					$.each(response, function(index, data) {
 						emoteList[data["code"]] = ["https://cdn.betterttv.net/emote/" + data["id"] + "/1x", extra];
 					});
 					break;
@@ -239,7 +272,7 @@ function addEmotes(url, parseMode, extra, direct = false, tries = 3) {
 		},
 		error: function() {
 			if (--tries > 0) {
-				addEmotes(url, parseMode, extra, direct, tries);
+				addEmotes(url, parseMode, extra, direct, tries, false);
 			} else {
 				if (--waiting == 0) {
 					startReplaceLoop();
@@ -308,13 +341,13 @@ function addChannelEmotes(channel, returns = false) {
 	if (extensionSettings.enableTwitchEmotes) {
 		if (((host == "www.twitch.tv" || host == "clips.twitch.tv") && extensionSettings.enableOnTwitch) || (host != "www.twitch.tv" && host != "clips.twitch.tv")) {
 			if (extensionSettings.subscriberEmotesChannels.indexOf(channel) == -1) {
-				urlList.push(["https://api.twitch.tv/api/channels/" + channel + "/product?client_id=p7avnpl1f9bpc9mxa6za572e94x2qc", 2, "Subscriber Emote - " + channel]);
+				urlList.push([channel, 5, "Subscriber Emote - " + channel]);
 			}
 		}
 	}
 	if (extensionSettings.enableBTTVEmotes) {
 		if (extensionSettings.BTTVChannels.indexOf(channel) == -1) {
-			urlList.push(["https://api.betterttv.net/2/channels/" + channel, 3, "BetterTTV Emote - " + channel]);
+			urlList.push([channel, 6, "BetterTTV Emote - " + channel]);
 		}
 	}
 	if (extensionSettings.enableFFZEmotes) {
@@ -353,7 +386,7 @@ function replacePhrasesWithEmotes(element) {
 		$(element).replaceWith(elementContent);
 		var scrollElements = [];
 		if (host == "www.twitch.tv") {
-			if (!$(".chat-list__list-footer").is(":visible")) {
+			if (!$(".chat-scroll-footer__placeholder").find(".tw-overflow-hidden").is(":visible")) {
 				scrollElements.push($(".chat-list").find(".simplebar-scroll-content"));
 			}
 			if (!$(".video-chat__sync-button").is(":visible")) {
